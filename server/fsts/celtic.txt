@@ -1,0 +1,753 @@
+#!/usr/local/bin/foma -f
+# Rule-based Proto-Celtic → daughter transducers.
+#
+# Daughters: Old_Irish, Middle_Welsh, Old_Welsh, Old_Breton, Middle_Breton,
+#            Old_Cornish, Middle_Cornish, Gaulish, Celtiberian.
+#
+# Modelled on the structure of germanic.txt. Proto-Celtic segments use the
+# {*x} brace notation throughout. Plain input characters are mapped to their
+# starred counterparts by the pcelt* template definitions, and the starred
+# forms are consumed by language-specific rule chains.
+#
+# Proto-Celtic consonantism: p, b, t, d, k, g, kʷ, gʷ, s, x, m, n, l, r, y,
+#   w, ɸ.  No /f/ (labiodental) and no /ō/ (PIE *ō merged with *ā in PC);
+#   both are daughter-language innovations or rule outputs.
+#
+# Phonological rules are simplified approximations. Complex conditioned changes
+# (morphological lenition classes, OI epenthesis, Brittonic affection,
+# Gaulish paradigm-specific apocope, etc.) produce known mismatches that are
+# documented in the comparison report.
+
+##############################################
+## Shared surface inventory                  ##
+##############################################
+
+# Used as the universe for the ProtoInput acceptor (unstarred surface chars).
+define PCeltVowel [
+    a | ā |
+    e | ē |
+    i | ī |
+    o |
+    u | ū |
+    {ei} | {ai} | {au} | {ou} | {ow}
+];
+
+define PCeltConsonant [
+    p | b | t | d | k | g |
+    s | x |
+    m | n | l | r | y | w | ɸ |
+    {kʷ} | {gʷ}
+];
+
+##############################################
+## Proto-Celtic word templates               ##
+##############################################
+
+# PCeltProtoInput: 113 attested protoforms (TSV PROTOFORM, * stripped).
+# Per-character pair notation ensures correct foma operator precedence.
+define PCeltProtoInput [
+    a:{*a} b:{*b} u:{*u} l:{*l} |
+    a:{*a} b:{*b} ū:{*ū} |
+    a:{*a} r:{*r} d:{*d} w:{*w} o:{*o} s:{*s} |
+    a:{*a} r:{*r} g:{*g} a:{*a} n:{*n} t:{*t} o:{*o} m:{*m} |
+    a:{*a} r:{*r} y:{*y} o:{*o} s:{*s} |
+    b:{*b} a:{*a} l:{*l} k:{*k} o:{*o} s:{*s} |
+    b:{*b} a:{*a} n:{*n} d:{*d} ā:{*ā} |
+    b:{*b} a:{*a} r:{*r} d:{*d} o:{*o} s:{*s} |
+    b:{*b} {au}:{*au} s:{*s} |
+    b:{*b} e:{*e} n:{*n} ā:{*ā} |
+    b:{*b} i:{*i} t:{*t} u:{*u} s:{*s} |
+    b:{*b} i:{*i} w:{*w} o:{*o} s:{*s} |
+    b:{*b} l:{*l} {ei}:{*ei} d:{*d} a:{*a} n:{*n} ī:{*ī} |
+    b:{*b} o:{*o} l:{*l} g:{*g} o:{*o} s:{*s} |
+    b:{*b} r:{*r} ā:{*ā} t:{*t} u:{*u} s:{*s} |
+    b:{*b} r:{*r} ā:{*ā} t:{*t} ī:{*ī} r:{*r} |
+    d:{*d} a:{*a} t:{*t} l:{*l} ā:{*ā} |
+    d:{*d} {ei}:{*ei} w:{*w} o:{*o} s:{*s} |
+    d:{*d} r:{*r} u:{*u} k:{*k} o:{*o} s:{*s} |
+    d:{*d} ū:{*ū} n:{*n} o:{*o} m:{*m} |
+    e:{*e} {kʷ}:{*kʷ} o:{*o} s:{*s} |
+    e:{*e} s:{*s} o:{*o} x:{*x} s:{*s} |
+    g:{*g} a:{*a} b:{*b} r:{*r} o:{*o} s:{*s} |
+    g:{*g} d:{*d} o:{*o} n:{*n} y:{*y} o:{*o} s:{*s} |
+    g:{*g} r:{*r} ā:{*ā} n:{*n} o:{*o} m:{*m} |
+    i:{*i} s:{*s} a:{*a} r:{*r} n:{*n} o:{*o} m:{*m} |
+    k:{*k} a:{*a} m:{*m} b:{*b} o:{*o} s:{*s} |
+    k:{*k} a:{*a} n:{*n} t:{*t} o:{*o} m:{*m} |
+    k:{*k} a:{*a} r:{*r} a:{*a} n:{*n} t:{*t} s:{*s} |
+    k:{*k} l:{*l} {ou}:{*ou} n:{*n} i:{*i} s:{*s} |
+    k:{*k} o:{*o} r:{*r} y:{*y} o:{*o} s:{*s} |
+    k:{*k} r:{*r} ī:{*ī} {kʷ}:{*kʷ} ā:{*ā} |
+    {kʷ}:{*kʷ} e:{*e} n:{*n} {kʷ}:{*kʷ} e:{*e} |
+    {kʷ}:{*kʷ} e:{*e} t:{*t} w:{*w} o:{*o} r:{*r} e:{*e} s:{*s} |
+    {kʷ}:{*kʷ} r:{*r} e:{*e} s:{*s} n:{*n} o:{*o} m:{*m} |
+    {kʷ}:{*kʷ} ā:{*ā} {kʷ}:{*kʷ} o:{*o} s:{*s} |
+    l:{*l} a:{*a} n:{*n} d:{*d} ā:{*ā} |
+    l:{*l} a:{*a} t:{*t} i:{*i} s:{*s} |
+    l:{*l} e:{*e} t:{*t} o:{*o} s:{*s} |
+    l:{*l} i:{*i} n:{*n} d:{*d} o:{*o} s:{*s} |
+    l:{*l} o:{*o} n:{*n} g:{*g} ā:{*ā} |
+    l:{*l} u:{*u} g:{*g} u:{*u} s:{*s} |
+    m:{*m} a:{*a} g:{*g} l:{*l} o:{*o} s:{*s} |
+    m:{*m} a:{*a} {kʷ}:{*kʷ} o:{*o} s:{*s} |
+    m:{*m} e:{*e} l:{*l} i:{*i} |
+    m:{*m} r:{*r} a:{*a} k:{*k} i:{*i} s:{*s} |
+    m:{*m} u:{*u} k:{*k} k:{*k} u:{*u} s:{*s} |
+    m:{*m} ā:{*ā} t:{*t} ī:{*ī} r:{*r} |
+    m:{*m} ē:{*ē} n:{*n} o:{*o} m:{*m} |
+    m:{*m} ī:{*ī} n:{*n} s:{*s} |
+    n:{*n} a:{*a} t:{*t} r:{*r} i:{*i} x:{*x} s:{*s} |
+    n:{*n} e:{*e} m:{*m} o:{*o} s:{*s} |
+    n:{*n} e:{*e} r:{*r} t:{*t} o:{*o} m:{*m} |
+    n:{*n} {ow}:{*ow} a:{*a} n:{*n} |
+    n:{*n} ā:{*ā} w:{*w} ā:{*ā} |
+    o:{*o} l:{*l} y:{*y} o:{*o} s:{*s} |
+    {ou}:{*ou} x:{*x} s:{*s} e:{*e} l:{*l} o:{*o} s:{*s} |
+    {ow}:{*ow} i:{*i} g:{*g} n:{*n} o:{*o} s:{*s} |
+    o:{*o} x:{*x} t:{*t} ū:{*ū} |
+    r:{*r} e:{*e} t:{*t} u:{*u} s:{*s} |
+    r:{*r} e:{*e} x:{*x} t:{*t} u:{*u} s:{*s} |
+    r:{*r} i:{*i} x:{*x} s:{*s} |
+    r:{*r} o:{*o} t:{*t} o:{*o} s:{*s} |
+    r:{*r} {ow}:{*ow} d:{*d} o:{*o} s:{*s} |
+    r:{*r} ū:{*ū} n:{*n} ā:{*ā} |
+    s:{*s} a:{*a} l:{*l} {ei}:{*ei} n:{*n} o:{*o} s:{*s} |
+    s:{*s} e:{*e} l:{*l} g:{*g} ā:{*ā} |
+    s:{*s} e:{*e} n:{*n} t:{*t} u:{*u} s:{*s} |
+    s:{*s} e:{*e} x:{*x} t:{*t} a:{*a} m:{*m} |
+    s:{*s} i:{*i} n:{*n} d:{*d} o:{*o} s:{*s} |
+    s:{*s} k:{*k} ā:{*ā} t:{*t} u:{*u} |
+    s:{*s} k:{*k} ī:{*ī} t:{*t} o:{*o} s:{*s} |
+    s:{*s} {kʷ}:{*kʷ} e:{*e} t:{*t} l:{*l} o:{*o} m:{*m} |
+    s:{*s} l:{*l} a:{*a} t:{*t} t:{*t} ā:{*ā} |
+    s:{*s} m:{*m} i:{*i} y:{*y} o:{*o} r:{*r} o:{*o} s:{*s} |
+    s:{*s} r:{*r} o:{*o} g:{*g} n:{*n} ā:{*ā} |
+    s:{*s} t:{*t} e:{*e} r:{*r} k:{*k} ā:{*ā} |
+    s:{*s} t:{*t} r:{*r} a:{*a} t:{*t} o:{*o} s:{*s} |
+    s:{*s} w:{*w} a:{*a} n:{*n} t:{*t} o:{*o} s:{*s} |
+    s:{*s} w:{*w} e:{*e} l:{*l} o:{*o} s:{*s} |
+    s:{*s} w:{*w} e:{*e} x:{*x} s:{*s} |
+    s:{*s} ī:{*ī} l:{*l} o:{*o} m:{*m} |
+    s:{*s} ɸ:{*ɸ} e:{*e} r:{*r} ā:{*ā} |
+    t:{*t} a:{*a} n:{*n} {gʷ}:{*gʷ} ā:{*ā} t:{*t} s:{*s} |
+    t:{*t} a:{*a} n:{*n} ā:{*ā} |
+    t:{*t} a:{*a} s:{*s} k:{*k} o:{*o} s:{*s} |
+    t:{*t} e:{*e} g:{*g} o:{*o} s:{*s} |
+    t:{*t} i:{*i} g:{*g} e:{*e} r:{*r} n:{*n} o:{*o} s:{*s} |
+    t:{*t} o:{*o} r:{*r} a:{*a} n:{*n} o:{*o} s:{*s} |
+    t:{*t} r:{*r} ā:{*ā} g:{*g} i:{*i} |
+    t:{*t} r:{*r} ī:{*ī} s:{*s} |
+    t:{*t} u:{*u} n:{*n} d:{*d} ā:{*ā} |
+    t:{*t} ī:{*ī} r:{*r} o:{*o} s:{*s} |
+    u:{*u} ɸ:{*ɸ} e:{*e} r:{*r} |
+    u:{*u} ɸ:{*ɸ} o:{*o} |
+    w:{*w} a:{*a} s:{*s} n:{*n} o:{*o} s:{*s} |
+    w:{*w} e:{*e} g:{*g} n:{*n} o:{*o} s:{*s} |
+    w:{*w} {ei}:{*ei} d:{*d} u:{*u} s:{*s} |
+    w:{*w} i:{*i} n:{*n} d:{*d} o:{*o} s:{*s} |
+    w:{*w} i:{*i} r:{*r} o:{*o} s:{*s} |
+    w:{*w} l:{*l} i:{*i} {kʷ}:{*kʷ} o:{*o} s:{*s} |
+    w:{*w} o:{*o} l:{*l} i:{*i} s:{*s} |
+    w:{*w} o:{*o} r:{*r} ī:{*ī} n:{*n} ā:{*ā} |
+    w:{*w} r:{*r} i:{*i} d:{*d} ā:{*ā} |
+    w:{*w} ā:{*ā} t:{*t} u:{*u} s:{*s} |
+    w:{*w} ī:{*ī} r:{*r} o:{*o} s:{*s} |
+    y:{*y} a:{*a} n:{*n} t:{*t} u:{*u} s:{*s} |
+    y:{*y} e:{*e} g:{*g} i:{*i} s:{*s} |
+    y:{*y} u:{*u} w:{*w} a:{*a} n:{*n} k:{*k} o:{*o} s:{*s} |
+    y:{*y} ā:{*ā} l:{*l} o:{*o} s:{*s} |
+    ɸ:{*ɸ} e:{*e} t:{*t} n:{*n} o:{*o} s:{*s} |
+    ɸ:{*ɸ} l:{*l} ā:{*ā} m:{*m} ā:{*ā} |
+    ɸ:{*ɸ} r:{*r} a:{*a} t:{*t} i:{*i} s:{*s}
+];
+
+
+
+define Cons PCeltConsonant;
+define Vowel PCeltVowel;
+
+##############################################
+## Starred inventories                       ##
+##############################################
+
+define PCeltStarShortVowel [ {*a} | {*e} | {*i} | {*o} | {*u} ];
+define PCeltStarLongVowel  [ {*ā} | {*ē} | {*ī} | {*ū} ];
+define PCeltStarDiphthong  [ {*ei} | {*ai} | {*au} | {*ou} | {*ow} ];
+define PCeltStarVowel [
+    PCeltStarShortVowel | PCeltStarLongVowel | PCeltStarDiphthong
+];
+define PCeltStarConsonant [
+    {*p} | {*b} | {*t} | {*d} | {*k} | {*g} | {*kʷ} | {*gʷ} |
+    {*s} | {*x} | {*m} | {*n} | {*l} | {*r} | {*y}  | {*w}  | {*ɸ} |
+    # created by rules, not proto-Celtic input:
+    {*f} | {*v} | {*θ} | {*ð} | {*ɣ} | {*χ} | {*ŋ} | {*h} | {*gw}
+];
+define PCeltStarSonorant [ {*l} | {*r} | {*m} | {*n} ];
+
+# Lenition context: segment licensing spirantisation of a following obstruent.
+define PCeltStarLenCtx [ PCeltStarVowel | PCeltStarSonorant ];
+
+define RemoveStars {*} -> 0;
+define CelticProtoInput PCeltProtoInput;
+
+##############################################
+## Surface phonotactics (baggy filters)      ##
+##############################################
+
+# Old Irish: colon-length vowels (a: e: i: o: u:), ə, ɣ, θ, ð, ŋ.
+define OISurfaceVowel [
+    {a} | {e} | {i} | {o} | {u} |
+    {a:} | {e:} | {i:} | {o:} | {u:} |
+    {ə}
+];
+define OISurfaceConsonant [
+    {b} | {d} | {f} | {g} | {h} | {k} | {l} | {m} | {n} | {p} |
+    {r} | {s} | {t} | {v} | {x} | {ð} | {θ} | {ɣ} | {χ} | {ŋ}
+];
+define OISurfaceOnset [
+    0 |
+    OISurfaceConsonant |
+    OISurfaceConsonant OISurfaceConsonant |
+    OISurfaceConsonant OISurfaceConsonant OISurfaceConsonant
+];
+define OISurfaceCoda [
+    0 |
+    OISurfaceConsonant |
+    OISurfaceConsonant OISurfaceConsonant |
+    OISurfaceConsonant OISurfaceConsonant OISurfaceConsonant
+];
+define OISurfaceSyllable OISurfaceOnset OISurfaceVowel OISurfaceCoda;
+define OISurface OISurfaceSyllable+;
+
+# Brittonic (OW, MW, OBret, MBret, OCorn, MCorn): union of attested tokens.
+# gw appears as two separate chars g+u in IPA notation.
+define BritSurfaceVowel [
+    {a} | {e} | {i} | {o} | {u} |
+    {a:} | {e:} | {i:} | {o:} | {u:} |
+    {ə}
+];
+define BritSurfaceConsonant [
+    {b} | {d} | {f} | {g} | {h} | {k} | {l} | {m} | {n} | {p} |
+    {r} | {s} | {t} | {v} | {w} | {x} | {z} |
+    {ð} | {θ} | {ɣ} | {χ} | {ŋ} | {ɬ}
+];
+define BritSurfaceOnset [
+    0 |
+    BritSurfaceConsonant |
+    BritSurfaceConsonant BritSurfaceConsonant |
+    BritSurfaceConsonant BritSurfaceConsonant BritSurfaceConsonant
+];
+define BritSurfaceCoda [
+    0 |
+    BritSurfaceConsonant |
+    BritSurfaceConsonant BritSurfaceConsonant |
+    BritSurfaceConsonant BritSurfaceConsonant BritSurfaceConsonant
+];
+define BritSurfaceSyllable BritSurfaceOnset BritSurfaceVowel BritSurfaceCoda;
+define BritSurface BritSurfaceSyllable+;
+
+# Gaulish: epigraphic IPA with macron long vowels; v from *uɸo-.
+define GaulSurfaceVowel [ a | e | i | o | u | ā | ē | ī | ō | ū ];
+define GaulSurfaceConsonant [
+    b | d | f | g | k | l | m | n | p | r | s | t | v | x | ŋ
+];
+define GaulSurfaceOnset [
+    0 |
+    GaulSurfaceConsonant |
+    GaulSurfaceConsonant GaulSurfaceConsonant |
+    GaulSurfaceConsonant GaulSurfaceConsonant GaulSurfaceConsonant
+];
+define GaulSurfaceCoda [
+    0 |
+    GaulSurfaceConsonant |
+    GaulSurfaceConsonant GaulSurfaceConsonant |
+    GaulSurfaceConsonant GaulSurfaceConsonant GaulSurfaceConsonant
+];
+define GaulSurfaceSyllable GaulSurfaceOnset GaulSurfaceVowel GaulSurfaceCoda;
+define GaulSurface GaulSurfaceSyllable+;
+
+# Celtiberian: plain short vowels, no length marking in TSV.
+define CeltibSurfaceVowel [ a | e | i | o | u ];
+define CeltibSurfaceConsonant [
+    b | d | g | k | l | m | n | p | r | s | t | w | z
+];
+define CeltibSurfaceOnset [
+    0 |
+    CeltibSurfaceConsonant |
+    CeltibSurfaceConsonant CeltibSurfaceConsonant |
+    CeltibSurfaceConsonant CeltibSurfaceConsonant CeltibSurfaceConsonant
+];
+define CeltibSurfaceCoda [
+    0 |
+    CeltibSurfaceConsonant |
+    CeltibSurfaceConsonant CeltibSurfaceConsonant |
+    CeltibSurfaceConsonant CeltibSurfaceConsonant CeltibSurfaceConsonant
+];
+define CeltibSurfaceSyllable CeltibSurfaceOnset CeltibSurfaceVowel CeltibSurfaceCoda;
+define CeltibSurface CeltibSurfaceSyllable+;
+
+##############################################
+## Old Irish transducer                      ##
+##############################################
+
+# 0. Universal: *ɸ → 0 in all daughters.
+define PCeltPhiLoss [ {*ɸ} -> 0 ];
+
+# 0b. Universal pre-rule: initial *u before *ɸ behaves as *w in Insular Celtic
+#     (*uɸo → fo/guo). Applied before OIInitialW / BritInitialW.
+define PCeltInitialUPhi [ {*u} -> {*w} || .#. _ {*ɸ} ];
+
+# 1. Labiovelars are Q-Celtic (merged with plain velars in Goidelic).
+define OILabioVelar [
+    {*kʷ} -> {*k},
+    {*gʷ} -> {*g}
+];
+
+# 2. Initial *gd- cluster: *g drops (*gdonyos > duin).
+define OIGdCluster [ {*g} {*d} -> {*d} || .#. _ ];
+
+# 3. Initial *sf- cluster: *f drops (*sɸerā after phi-loss → *sera > ser).
+define OISFCluster [ {*s} {*f} -> {*s} || .#. _ ];
+
+# 4. Initial *w > *f (*wiros > fer, *windos > find).
+define OIInitialW [ {*w} -> {*f} || .#. _ ];
+
+# 5. *w after a consonant > 0 (*ardwos > ard).
+define OIMedialWDrop [ {*w} -> 0 || PCeltStarConsonant _ ];
+
+# 6. *w after a vowel > *u (*biwos > beo, *abū > auv).
+define OIMedialWVocal [ {*w} -> {*u} || PCeltStarVowel _ ];
+
+# 7. *y > 0 everywhere in Old Irish.
+define OIYDrop [ {*y} -> 0 ];
+
+# 8. Compensatory lengthening before nasal+stop clusters.
+#    *ant > *ēd, *ank > *ēg (over-applies medially, e.g. *argantom > arɣe:d).
+define OINasalAnt [
+    {*a} {*n} {*t} -> {*ē} {*d},
+    {*a} {*n} {*k} -> {*ē} {*g}
+];
+
+# 9. *mb > *m (*kambos > cam).
+define OIMbSimpl [ {*m} {*b} -> {*m} ];
+
+# 10. *u > *o before *k + following vowel (*drukos > droch).
+define OIULowering [ {*u} -> {*o} || _ PCeltStarConsonant {*o} ];
+
+# 11. *s > 0 between vowels (*esoxs > eo).
+define OIMedialSLoss [ {*s} -> 0 || PCeltStarVowel _ PCeltStarVowel ];
+
+# 12. *t > *θ between vowels (*latis > lath, *brātīr > brāθīr).
+#     Applied BEFORE apocope so the right-hand vowel is still present.
+define OIMedialT [ {*t} -> {*θ} || PCeltStarVowel _ PCeltStarVowel ];
+
+# 13. *d > *ð between vowels.
+define OIMedialD [ {*d} -> {*ð} || PCeltStarVowel _ PCeltStarVowel ];
+
+# 14. *k > *x after vowel/sonorant, before vowel or word-finally.
+define OIFinalK [
+    {*k} -> {*x} || PCeltStarLenCtx _ PCeltStarVowel,
+    {*k} -> {*x} || PCeltStarLenCtx _ .#.
+];
+
+# 15. *b > *v between vowels (*abū > auv).
+define OIBLenition [ {*b} -> {*v} || PCeltStarVowel _ PCeltStarVowel ];
+
+# 16. Diphthong mergers in Old Irish.
+#     *au > *o (short) per TSV *baus → b o.
+define OIVowelDiphthongs [
+    {*ei} -> {*ī},
+    {*ai} -> {*e},
+    {*au} -> {*o},
+    {*ou} -> {*ū},
+    {*ow} -> {*ū}
+];
+
+# 17. Nasal assimilation: *n > *ŋ before *g (*longā > loŋg).
+define OINasalAssimN [ {*n} -> {*ŋ} || _ {*g} ];
+
+# 18. Final-syllable apocope (three sequential passes).
+#     Pass 2 drops only *s (not *m) after a vowel: handles *trīs → trī etc.
+#     *m is NOT dropped here — stem-final *m from OIMbSimpl must survive.
+define OIApocope [
+    [{*o}{*s} -> 0, {*o}{*m} -> 0, {*u}{*s} -> 0, {*x}{*s} -> 0 || _ .#.]
+    .o.
+    [{*s} -> 0 || PCeltStarVowel _ .#.]
+    .o.
+    [{*ā} -> 0, {*ī} -> 0, {*u} -> 0, {*i} -> 0 || _ .#.]
+];
+
+# 18. *g > *ɣ between vowels: applied AFTER apocope so word-final *g is not
+#     spirantised (*lugus > lug, not luɣ; *tigernos > tiɣern ✓).
+define OIMedialG [ {*g} -> {*ɣ} || PCeltStarVowel _ PCeltStarVowel ];
+
+# 19. *g > 0 after long vowel at word-end (*rīgs > rī).
+define OIGLossAfterLong [ {*g} -> 0 || PCeltStarLongVowel _ .#. ];
+
+# 20. Strip asterisks; map long vowels to colon notation.
+define OIRemoveStars [
+    {*a} -> a,       {*ā} -> {a:},
+    {*e} -> e,       {*ē} -> {e:},
+    {*i} -> i,       {*ī} -> {i:},
+    {*o} -> o,       {*ū} -> {u:},
+    {*u} -> u,
+    {*b} -> b,       {*d} -> d,
+    {*f} -> f,       {*g} -> g,
+    {*h} -> h,       {*k} -> k,
+    {*l} -> l,       {*m} -> m,
+    {*n} -> n,       {*p} -> p,
+    {*r} -> r,       {*s} -> s,
+    {*t} -> t,       {*v} -> v,
+    {*w} -> u,       {*x} -> x,
+    {*y} -> 0,
+    {*θ} -> θ,       {*ð} -> ð,
+    {*ɣ} -> ɣ,       {*χ} -> χ,
+    {*ŋ} -> ŋ
+];
+
+define OIRules [
+    PCeltInitialUPhi
+    .o. PCeltPhiLoss
+    .o. OILabioVelar
+    .o. OIGdCluster
+    .o. OISFCluster
+    .o. OIInitialW
+    .o. OIMedialWDrop
+    .o. OIMedialWVocal
+    .o. OIYDrop
+    .o. OINasalAnt
+    .o. OIMbSimpl
+    .o. OIULowering
+    .o. OIMedialSLoss
+    .o. OIMedialT
+    .o. OIMedialD
+    .o. OIFinalK
+    .o. OIBLenition
+    .o. OIVowelDiphthongs
+    .o. OINasalAssimN
+    .o. OIApocope
+    .o. OIMedialG
+    .o. OIGLossAfterLong
+    .o. OIRemoveStars
+];
+
+define OIReflexes CelticProtoInput .o. OIRules;
+define OldIrish   OIReflexes .o. OISurface;
+
+# Middle Irish shares the Old Irish transducer at this level of abstraction.
+define MiddleIrish OldIrish;
+
+##############################################
+## Brittonic transducer                      ##
+##############################################
+
+# 1. *kʷ > *p, *gʷ > *b (the defining P-Celtic innovation).
+define BritLabioVelar [
+    {*kʷ} -> {*p},
+    {*gʷ} -> {*b}
+];
+
+# 2. Initial *gd- > *d (*gdonyos > din).
+define BritGdCluster [ {*g} {*d} -> {*d} || .#. _ ];
+
+# 3. Initial consonant-cluster simplifications before other initial-s rules.
+#    *sr- > *fr- (shared with Gaulish; *srognā > froin/frogna).
+#    *sw- > *χw- (MW chw-), *sf- > *f-, *sm- > *m-, *sl- > *l-.
+define BritInitialSClusters [
+    {*s} {*r} -> {*f} {*r} || .#. _,
+    {*s} {*w} -> {*χ} {*w} || .#. _,
+    {*s} {*f} -> {*f}       || .#. _,
+    {*s} {*m} -> {*m}       || .#. _,
+    {*s} {*l} -> {*l}       || .#. _
+];
+
+# 4. Remaining initial *s > *h.
+define BritInitialS [ {*s} -> {*h} || .#. _ ];
+
+# 5. Initial *w > *gw (*wiros > gwr, *windos > gwinn).
+#    gw appears as g+u in the IPA tokens (OW guo, MW guið etc.).
+define BritInitialW [ {*w} -> {*gw} || .#. _ ];
+
+# 6. *w after a consonant > 0 (*ardwos > arð).
+define BritMedialWDrop [ {*w} -> 0 || PCeltStarConsonant _ ];
+
+# 7. *y > 0.
+define BritYDrop [ {*y} -> 0 ];
+
+# 8. *ū > *i (short i; Brittonic u-raising: *dūnom > din, *rūnā > rin).
+#    Produces short surface i, not long i:, matching all TSV daughter forms.
+define BritUtoI [ {*ū} -> {*i} ];
+
+# 9. *mb > *m (*kambos > camm/cam in Brittonic).
+define BritMbSimpl [ {*m} {*b} -> {*m} ];
+
+# 10. Diphthong mergers in Brittonic.
+#     *au > *u (OW bu from *baus); *ow > *aw (naw from *nowan).
+define BritVowelDiphthongs [
+    {*ei} -> {*oi},
+    {*ai} -> {*oi},
+    {*au} -> {*u},
+    {*ou} -> {*u},
+    {*ow} -> {*aw}
+];
+
+# 11. Final-syllable apocope (mirrors OIApocope; pass 2 drops *s only).
+#     Pass 3 does NOT drop *o: *uɸo → guo (final *o is stem, not paradigm ending).
+define BritApocope [
+    [{*o}{*s} -> 0, {*o}{*m} -> 0, {*u}{*s} -> 0 || _ .#.]
+    .o.
+    [{*s} -> 0 || PCeltStarVowel _ .#.]
+    .o.
+    [{*ā} -> 0, {*ī} -> 0, {*u} -> 0, {*i} -> 0 || _ .#.]
+];
+
+# 12. Lenition of obstruents in weak position. Each rule is a separate define
+#     composed sequentially to avoid parallel-replacement + .#. interactions.
+define BritLenInterD [ {*d} -> {*ð} || PCeltStarLenCtx _ PCeltStarVowel ];
+define BritLenFinalD [ {*d} -> {*ð} || PCeltStarLenCtx _ .#. ];
+define BritLenT     [ {*t} -> {*d} || PCeltStarVowel _ PCeltStarSonorant ];
+define BritLenFinalK [ {*k} -> {*χ} || PCeltStarSonorant _ .#. ];
+define BritLenInterG [ {*g} -> {*ɣ} || PCeltStarVowel _ PCeltStarVowel ];
+define BritLenition [
+    BritLenInterD .o. BritLenFinalD .o. BritLenT .o. BritLenFinalK .o. BritLenInterG
+];
+
+
+define BritRemoveStars [
+    {*a}  -> a,      {*ā}  -> a u,
+    {*e}  -> e,      {*ē}  -> {e:},
+    {*i}  -> i,      {*ī}  -> {i:},
+    {*o}  -> o,      {*ū}  -> {u:},
+    {*u}  -> u,
+    {*oi} -> {oi},   {*aw} -> {aw},
+    {*b}  -> b,      {*d}  -> d,
+    {*f}  -> f,      {*g}  -> g,
+    {*gw} -> g u,    {*h}  -> h,
+    {*k}  -> k,      {*l}  -> l,
+    {*m}  -> m,      {*n}  -> n,
+    {*p}  -> p,      {*r}  -> r,
+    {*s}  -> s,      {*t}  -> t,
+    {*v}  -> v,      {*w}  -> u,
+    {*x}  -> x,      {*y}  -> 0,
+    {*θ}  -> θ,      {*ð}  -> ð,
+    {*ɣ}  -> ɣ,      {*χ}  -> χ,
+    {*ŋ}  -> ŋ
+];
+
+define BritRules [
+    PCeltInitialUPhi
+    .o. PCeltPhiLoss
+    .o. BritLabioVelar
+    .o. BritGdCluster
+    .o. BritInitialSClusters
+    .o. BritInitialS
+    .o. BritInitialW
+    .o. BritMedialWDrop
+    .o. BritYDrop
+    .o. BritMbSimpl
+    .o. BritUtoI
+    .o. BritVowelDiphthongs
+    .o. BritApocope
+    .o. BritLenition
+    .o. BritRemoveStars
+];
+
+define BritReflexes CelticProtoInput .o. BritRules;
+
+# All six Brittonic daughters share the rule chain at this level of abstraction.
+# Dialect-internal differences (Breton ā > o, Cornish final -e, Welsh vowel
+# mutation) produce mismatches rather than wrong-branch outputs.
+define OldWelsh      BritReflexes .o. BritSurface;
+define MiddleWelsh   BritReflexes .o. BritSurface;
+define OldBreton     BritReflexes .o. BritSurface;
+define MiddleBreton  BritReflexes .o. BritSurface;
+define OldCornish    BritReflexes .o. BritSurface;
+define MiddleCornish BritReflexes .o. BritSurface;
+
+##############################################
+## Gaulish transducer                        ##
+##############################################
+
+# Gaulish is a Continental P-Celtic language that preserves endings more
+# fully than Insular Celtic. Whether a particular form retains its final
+# syllable depends on the declension and register; no general apocope rule
+# is applied here — such forms will mismatch the TSV rather than
+# over-deleting correct endings.
+
+# 0g. Gaulish-specific treatment of initial *u before *ɸ: *u → *v, not *w.
+#     (*uɸo > vo, *uɸer > ver). Applied before PCeltPhiLoss.
+define GaulInitialUPhi [ {*u} -> {*v} || .#. _ {*ɸ} ];
+
+# 1. *kʷ > *p, *gʷ > *b (P-Celtic).
+define GaulLabioVelar [
+    {*kʷ} -> {*p},
+    {*gʷ} -> {*b}
+];
+
+# 2. Initial *sr- > *fr- (attested in *srognā > frogna; shared with Brittonic).
+define GaulInitialSR [ {*s} {*r} -> {*f} {*r} || .#. _ ];
+
+# 3. *w > *u everywhere (*wiros > uiros, *windos > uindus).
+define GaulWVocal [ {*w} -> {*u} ];
+
+# 4. *y > 0.
+define GaulYDrop [ {*y} -> 0 ];
+
+# 5. Diphthong reductions.
+define GaulVowelDiphthongs [
+    {*ei} -> {*e},
+    {*ai} -> {*e},
+    {*au} -> {*o},
+    {*ou} -> {*u},
+    {*ow} -> {*u}
+];
+
+# 6. Strip asterisks; macron notation for Gaulish long vowels.
+define GaulRemoveStars [
+    {*a}  -> a,   {*ā}  -> ā,
+    {*e}  -> e,   {*ē}  -> ē,
+    {*i}  -> i,   {*ī}  -> ī,
+    {*o}  -> o,   {*ū}  -> ū,
+    {*u}  -> u,
+    {*b}  -> b,   {*d}  -> d,
+    {*f}  -> f,   {*g}  -> g,
+    {*k}  -> k,   {*l}  -> l,
+    {*m}  -> m,   {*n}  -> n,
+    {*p}  -> p,   {*r}  -> r,
+    {*s}  -> s,   {*t}  -> t,
+    {*v}  -> v,   {*w}  -> u,
+    {*x}  -> x,   {*y}  -> 0,
+    {*ŋ}  -> ŋ,   {*ɣ}  -> ɣ
+];
+
+define GaulRules [
+    GaulInitialUPhi
+    .o. PCeltPhiLoss
+    .o. GaulLabioVelar
+    .o. GaulInitialSR
+    .o. GaulWVocal
+    .o. GaulYDrop
+    .o. GaulVowelDiphthongs
+    .o. GaulRemoveStars
+];
+
+define GaulReflexes CelticProtoInput .o. GaulRules;
+define Gaulish      GaulReflexes .o. GaulSurface;
+
+##############################################
+## Celtiberian transducer                    ##
+##############################################
+
+# Celtiberian is a Q-Celtic Continental language. The TSV data (11 cognate
+# sets) show conservative preservation with no length marking.
+
+# 1. *kʷ > k+u, *gʷ > g+u (Q-Celtic labiovelars preserved as clusters).
+define CeltibLabioVelar [
+    {*kʷ} -> {*k} {*u},
+    {*gʷ} -> {*g} {*u}
+];
+
+# 2. *w > *u everywhere.
+define CeltibWVocal [ {*w} -> {*u} ];
+
+# 3. Initial *d > *t (devoicing attested in *deiwos > teiuo).
+define CeltibInitialD [ {*d} -> {*t} || .#. _ ];
+
+# 4. *x > 0 (*rextus > retu).
+define CeltibXLoss [ {*x} -> 0 ];
+
+# 5. *y > 0.
+define CeltibYDrop [ {*y} -> 0 ];
+
+# 5a. Diphthong reductions (*au > *o as in *baus > bo).
+define CeltibDiphthongs [ {*au} -> {*o}, {*ou} -> {*u} ];
+
+# 5b. Final apocope: drop *s after vowel (*lugus > lugu, *deiwos > teiuo).
+define CeltibApocope [ {*s} -> 0 || PCeltStarVowel _ .#. ];
+
+# 6.
+define CeltibRemoveStars [
+    {*a}  -> a,   {*ā}  -> a,
+    {*e}  -> e,   {*ē}  -> e,
+    {*i}  -> i,   {*ī}  -> i,
+    {*o}  -> o,
+    {*u}  -> u,   {*ū}  -> u,
+    {*b}  -> b,   {*d}  -> d,
+    {*g}  -> g,   {*k}  -> k,
+    {*l}  -> l,   {*m}  -> m,
+    {*n}  -> n,   {*p}  -> p,
+    {*r}  -> r,   {*s}  -> s,
+    {*t}  -> t,   {*v}  -> v,
+    {*w}  -> u,   {*x}  -> 0,
+    {*y}  -> 0,   {*ŋ}  -> n,
+    {*ei} -> e i, {*ai} -> a i,
+    {*au} -> a u, {*ou} -> o u,
+    {*ow} -> o u
+];
+
+define CeltibRules [
+    PCeltPhiLoss
+    .o. CeltibLabioVelar
+    .o. CeltibWVocal
+    .o. CeltibInitialD
+    .o. CeltibXLoss
+    .o. CeltibYDrop
+    .o. CeltibDiphthongs
+    .o. CeltibApocope
+    .o. CeltibRemoveStars
+];
+
+define CeltibReflexes CelticProtoInput .o. CeltibRules;
+define Celtiberian    CeltibReflexes .o. CeltibSurface;
+
+##############################################
+## Instrumentation (intermediate stages)    ##
+##############################################
+
+# Snapshot of the proto-input acceptor for debugging lookups.
+define old_irish_after_proto_input CelticProtoInput;
+define brit_after_proto_input      CelticProtoInput;
+
+##############################################
+## Compile and save                          ##
+##############################################
+
+clear stack
+regex OldIrish;
+save stack old_irish.bin
+
+clear stack
+regex MiddleIrish;
+save stack middle_irish.bin
+
+clear stack
+regex OldWelsh;
+save stack old_welsh.bin
+
+clear stack
+regex MiddleWelsh;
+save stack middle_welsh.bin
+
+clear stack
+regex OldBreton;
+save stack old_breton.bin
+
+clear stack
+regex MiddleBreton;
+save stack middle_breton.bin
+
+clear stack
+regex OldCornish;
+save stack old_cornish.bin
+
+clear stack
+regex MiddleCornish;
+save stack middle_cornish.bin
+
+clear stack
+regex Gaulish;
+save stack gaulish.bin
+
+clear stack
+regex Celtiberian;
+save stack celtiberian.bin

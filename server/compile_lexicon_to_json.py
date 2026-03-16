@@ -18,6 +18,7 @@ from data_profiles import DataProfile, detect_profile
 from syllable_parser import build_syllable_parsed_entries
 import argparse
 import fileinput
+import itertools
 from collections import defaultdict
 
 
@@ -424,8 +425,11 @@ def compile_to_json_full_cognates(
 
                 # print("trying ", row["DOCULECT"], " on ", syl, " : ", row["CONCEPT"])
 
-                # Apply the transducer upwards to this word
-                recs = list(fsts[row["DOCULECT"]].apply_up(syl))
+                # Cap pathological analyses to avoid wedging /new-board.
+                recs = list(itertools.islice(fsts[row["DOCULECT"]].apply_up(syl), 33))
+                if len(recs) == 33:
+                    protoform = (row.get("PROTOFORM") or "").strip().lstrip("*")
+                    recs = [protoform] if protoform else []
 
                 if not recs and pipeline_name == "germanic":
                     fallback = f"*{surface_form}"

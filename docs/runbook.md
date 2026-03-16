@@ -22,7 +22,8 @@ in `SETUP.md` / `USAGE.md` as needed.
 ## 2. Load data in the UI
 1. Visit `http://localhost:5002`.
 2. Use the “Available input sources” dropdown to select
-   `burmish-aligned-final.tsv` or `germanic-aligned-final.tsv` (files live under
+   `burmish-aligned-final.tsv`, `germanic-aligned-final.tsv`, or
+   `celtic-aligned-final.tsv` (files live under
    `server/data/`). The Germanic board now exposes four doculects (English,
    Old English, Dutch, German); seeing the extra rows under `Old English` is
    expected.

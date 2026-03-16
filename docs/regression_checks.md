@@ -6,8 +6,8 @@ code so future FST changes can be verified quickly.
 
 ## Scope
 
-- Hit `/new-board` for both `burmish-aligned-final.tsv` and
-  `germanic-aligned-final.tsv`.
+- Hit `/new-board` for `burmish-aligned-final.tsv`,
+  `germanic-aligned-final.tsv`, and `celtic-aligned-final.tsv`.
 - Assert that the response includes populated `syllables_parsed`, and that the
   doculect inventory matches the TSV.
 - For each pipeline, call `/compare-fst` with a representative pair of
@@ -39,6 +39,7 @@ code so future FST changes can be verified quickly.
    ```text
    PASS  burmish (burmish-aligned-final.tsv)
    PASS  germanic (germanic-aligned-final.tsv)
+   PASS  celtic (celtic-aligned-final.tsv)
 
    Completed in 4.1s
    ```

@@ -1,9 +1,9 @@
 """API regression harness for CAPR pipelines.
 
 Run this script against a live backend (e.g. ``docker compose up -d``) to
-exercise ``/new-board`` and ``/compare-fst`` for the Burmish and Germanic
-pipelines. The goal is an early warning if syllable parsing or correspondence
-generation regresses.
+exercise ``/new-board`` and ``/compare-fst`` for the Burmish, Germanic, and
+Celtic pipelines. The goal is an early warning if syllable parsing or
+correspondence generation regresses.
 
 Example::
 
@@ -45,6 +45,13 @@ SPECS: Sequence[CompareSpec] = (
         data_path="germanic-aligned-final.tsv",
         transducer_name="germanic.txt",
         pairs=(("English", "German"),),
+        expected_missing=(),
+    ),
+    CompareSpec(
+        pipeline="celtic",
+        data_path="celtic-aligned-final.tsv",
+        transducer_name="celtic.txt",
+        pairs=(("Old_Irish", "Old_Welsh"),),
         expected_missing=(),
     ),
 )

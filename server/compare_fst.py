@@ -32,7 +32,18 @@ language_title = {
     'English': 'English',
     'German': 'German',
     'Old_English': 'Old English',
+    'Old_Irish': 'Old Irish',
+    'Old_Welsh': 'Old Welsh',
+    'Middle_Welsh': 'Middle Welsh',
+    'Old_Breton': 'Old Breton',
+    'Middle_Breton': 'Middle Breton',
+    'Old_Cornish': 'Old Cornish',
+    'Middle_Cornish': 'Middle Cornish',
+    'Gaulish': 'Gaulish',
+    'Celtiberian': 'Celtiberian',
 }
+import itertools
+
 fst_index = {
     'Old_Burmese': 'burmese',
     'Achang_Longchuan': 'ngochang',
@@ -45,6 +56,15 @@ fst_index = {
     'English': 'english',
     'German': 'german',
     'Old_English': 'old_english',
+    'Old_Irish': 'old_irish',
+    'Old_Welsh': 'old_welsh',
+    'Middle_Welsh': 'middle_welsh',
+    'Old_Breton': 'old_breton',
+    'Middle_Breton': 'middle_breton',
+    'Old_Cornish': 'old_cornish',
+    'Middle_Cornish': 'middle_cornish',
+    'Gaulish': 'gaulish',
+    'Celtiberian': 'celtiberian',
 }
 
 # Basic imports

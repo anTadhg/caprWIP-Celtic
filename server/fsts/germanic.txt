@@ -31,7 +31,7 @@ define ProtoOnsetCore [
     mb|mm|mn|mr|nd|ng|nj|nk|nn|nr|nθ|pn|pp|rb|rd|rg|rk|rm|rn|rp|rr|rt|rw|rx|rθ|
     sk|sl|sm|sn|sp|st|sw|tj|tn|tr|tt|wj|wr|ww|
     xm|xn|xr|xs|xt|xw|zd|zj|zn|zw|θl|θr|
-    kkj|ldr|lgw|llj|ltj|ndj|ndl|ndr|ngj|ngr|ngw|ntr|nxst|rst|rwj|rxt|spr|stj|str|wwj|xtj|nxwst
+    kkj|ldr|lgw|llj|ltj|ndj|ndl|ndr|ngj|ngr|ngw|ntr|rst|rwj|rxt|spr|stj|str|wwj|xtj|nxwst
 ];
 define ProtoOnset [0|ProtoOnsetCore];
 
@@ -42,7 +42,7 @@ define ProtoCodaCore [
     mb|mm|mn|mr|nd|ng|nj|nk|nn|nr|nθ|pn|pp|rb|rd|rg|rk|rm|rn|rp|rr|rt|rw|rx|rθ|
     sk|sl|sm|st|sz|tj|tn|tr|tt|wj|ww|wz|
     xm|xs|xt|xw|xz|zd|zj|zn|zw|θl|θr|θz|
-    kkj|ldr|lgw|llj|ltj|ndj|ndl|ndr|ndz|ngj|ngr|ngw|nsz|ntr|nxst|rst|rwj|rxt|stj|stz|wwj|xtj|xtz|nxwst
+    kkj|ldr|lgw|llj|ltj|ndj|ndl|ndr|ndz|ngj|ngr|ngw|nsz|ntr|rst|rwj|rxt|stj|stz|wwj|xtj|xtz|nxwst
 ];
 define ProtoCoda (0 | ProtoCodaCore | ProtoCodaCore ProtoCodaCore);
 
@@ -77,7 +77,7 @@ define Vowel ProtoVowel;
 
 define pgrmInitSimple [
     p:{*p} | t:{*t} | k:{*k} | b:{*b} | d:{*d} | g:{*g} |
-    f:{*f} | s:{*s} | x:{*x} |
+    f:{*f} | þ:{*þ} | s:{*s} | h:{*h} | x:{*x} |
     m:{*m} | n:{*n} | ŋ:{*ŋ} |
     l:{*l} | r:{*r} | j:{*j} | w:{*w} |
     z:{*z} | ð:{*ð} | θ:{*θ} | ɣ:{*ɣ}
@@ -196,7 +196,6 @@ define pgrmCodaComplex [
     n:{*n} n:{*n} |
     n:{*n} r:{*r} |
     n:{*n} θ:{*θ} |
-    n:{*n} ð:{*ð} |
     p:{*p} n:{*n} |
     p:{*p} p:{*p} |
     r:{*r} b:{*b} |
@@ -235,7 +234,6 @@ define pgrmCodaComplex [
     θ:{*θ} l:{*l} |
     θ:{*θ} r:{*r} |
     θ:{*θ} z:{*z} |
-    ð:{*ð} l:{*l} |
     k:{*k} k:{*k} j:{*j} |
     l:{*l} d:{*d} r:{*r} |
     l:{*l} g:{*g} w:{*w} |
@@ -258,9 +256,7 @@ define pgrmCodaComplex [
     w:{*w} w:{*w} j:{*j} |
     x:{*x} t:{*t} j:{*j} |
     x:{*x} t:{*t} z:{*z} |
-    n:{*n} x:{*x} s:{*s} t:{*t} |
-    n:{*n} x:{*x} w:{*w} s:{*s} t:{*t} |
-    t:{*t} t:{*t} m:{*m}
+    n:{*n} x:{*x} w:{*w} s:{*s} t:{*t}
 ];
 
 define pgrmCodaNonEmpty [pgrmCodaSimple | pgrmCodaComplex];
@@ -291,11 +287,8 @@ define pgrmWeakTailVowel [
     ă:{*ă} n:{*n} |
     ă:{*ă} n:{*n} ą:{*ą} |
     a:{*a} n:{*n} ą:{*ą} |
-    a:{*a} n:{*n} ă:{*ă} z:{*z} |
     ă:{*ă} n:{*n} ē:{*ē} |
     j:{*j} ă:{*ă} n:{*n} ą:{*ą} |
-    # Sievers' Law: heavy-stem Class I weak infinitive *-ijăną (R/T vol.2 pp.69-70)
-    i:{*i} j:{*j} ă:{*ă} n:{*n} ą:{*ą} |
     a:{*a} r:{*r} ă:{*ă} z:{*z} |
     a:{*a} r:{*r} a:{*a} s:{*s} |
     a:{*a} s:{*s} |
@@ -343,9 +336,8 @@ define pgrmWeakTailVowel [
     ō:{*ō} z:{*z} |
     i:{*i} θ:{*θ} ō:{*ō} |
     # Class III weak paradigm cells (for testing archaic forms)
-    # 3sg present indicative: *-ēθi (PGmc *-aiþi → NWGmc *-ēþ)
-    # Note: Uses θ (U+03B8) not þ (U+00FE) to match rest of grammar
-    ē:{*ē} θ:{*θ} i:{*i} |
+    # 3sg present indicative: *-ēþi (PGmc *-aiþi → NWGmc *-ēþ)
+    ē:{*ē} þ:{*þ} i:{*i} |
     # 2sg present indicative: *-ēsi (PGmc *-aisi → NWGmc *-ēs)
     ē:{*ē} s:{*s} i:{*i} |
     # imperative sg: *-ē (PGmc *-ai → NWGmc *-ē)
@@ -421,6 +413,7 @@ define PGmcStarConsonant [
     {*d} |
     {*f} |
     {*g} |
+    {*h} |
     {*j} |
     {*k} |
     {*l} |
@@ -434,6 +427,7 @@ define PGmcStarConsonant [
     {*x} |
     {*z} |
     {*ð} |
+    {*þ} |
     {*ŋ} |
     {*ɣ} |
     {*θ} |
@@ -601,6 +595,7 @@ define OEXsMerge [
 
 define OldEnglishOrthography [
     {*θ} -> þ,
+    {*þ} -> þ,
     {*ð} -> ð,
     {*ʧ} -> ċ,
     {*ʤ} -> ġ,
@@ -663,6 +658,7 @@ define OldEnglishRemoveStars [
     {*d} -> d,
     {*f} -> f,
     {*g} -> g,
+    {*h} -> h,
     {*k} -> c,
     {*l} -> l,
     {*m} -> m,
@@ -713,10 +709,7 @@ define EnglishStarVelarStop [{*k} | {*g}];
 
 define EnglishStarLabial [{*b} | {*β} | {*p} | {*f} | {*v} | {*m} | {*w}];
 
-define EnglishStarFricative [{*f} | {*β} | {*s} | {*θ} | {*ð} | {*x}];
-
-# Voiceless fricatives only - for NSL (Fulk §4.11: *mf, *ns, *nþ)
-define EnglishStarVoicelessFricative [{*f} | {*s} | {*θ} | {*x}];
+define EnglishStarFricative [{*f} | {*β} | {*s} | {*θ} | {*ð} | {*h} | {*x}];
 
 define EnglishIUmlautTrigger [{*i} | {*ī} | {*j}];
 
@@ -729,7 +722,7 @@ define EnglishStarConsonantNoR [EnglishStarConsonant - {*r}];
 define EnglishStarConsonantNoLabial [EnglishStarConsonant - EnglishStarLabial];
 
 # Velar consonants (block i-lowering per Howell & Salmons 1997).
-define EnglishStarVelar [{*k} | {*g} | {*ŋ} | {*x} | {*ɣ}];
+define EnglishStarVelar [{*k} | {*g} | {*ŋ} | {*x} | {*ɣ} | {*h}];
 
 # Combined velar-or-labial class (blocking consonants for i-lowering).
 # Per Howell & Salmons (1997): dorsals and labials share place features with
@@ -1128,16 +1121,6 @@ define PWGmcLThVoicing [
     {*θ} -> {*d} || {*l} _
 ];
 
-# PWGmc: Dental fricative hardening (R/T vol.2 p.43).
-# R/T: "In PWGmc the non-coronal voiced obstruents continued to exhibit that
-# allophony, but *d became a stop in all positions."
-# PGmc *ð (voiced dental fricative) → PWGmc *d (stop) universally.
-# This affects Verner's Law forms where *þ was voiced to *ð (e.g., past participles).
-# Examples: *funðanaz → *fundanaz (ptp. of 'find'), *weorðan → *werdan
-define PWGmcDentalHardening [
-    {*ð} -> {*d}
-];
-
 # R/T §3.1.4: Before word-final *r, bimoric *ō → *a in PWGmc.
 # PGmc *watōr → PWGmc *watar → OE wæter.
 # The *a is then fronted by AFB and reduced by §6.9.6 merger.
@@ -1146,7 +1129,7 @@ define PWGmcPreFinalRShortening [
 ];
 
 # Combine West Germanic rules in chronological order per R/T §3.1, §5.1.3.
-# Order: monophthongization, ij-contraction, syllabic j, lþ-voicing, dental hardening.
+# Order: monophthongization, ij-contraction, syllabic j, lþ-voicing.
 # NOTE: PWGmcDenasalization (*ą→*a etc.) is historically correct but DISABLED
 # because downstream apocope rules depend on seeing {*ą} tokens. Denasalization
 # must only be added after those rules are updated to handle denasalized forms.
@@ -1155,7 +1138,6 @@ define PWGmcChanges [
     .o. PWGmcIjContraction
     .o. PWGmcSyllabicJ
     .o. PWGmcLThVoicing
-    .o. PWGmcDentalHardening
     .o. PWGmcPreFinalRShortening
 ];
 
@@ -1472,69 +1454,6 @@ define OEMedUnstressedULowering [
     {*u} -> {*o} || EnglishStarVocalic [EnglishStarConsonant | EnglishPalatalConsonant]+ _ [EnglishStarConsonant | EnglishPalatalConsonant]
 ];
 
-# ===========================================================================
-# UNSTRESSED *i MARKING AND LOWERING
-# ===========================================================================
-# Hogg (1992) p.120: "by about 700 all unstressed front vowels had become /e/"
-# Campbell §369: "æ, e, and i fell together in a sound written e in unaccented syllables"
-# R/T §6.9.6: "The same merger occurred in various derivational suffixes; thus
-#   ærist 'first' > ærest, dryhtin 'lord' > dryhten"
-#
-# The challenge: we must distinguish STRESSED *i (which stays *i) from UNSTRESSED
-# *i (which lowers to *e). OE stress falls on:
-#   - First syllable (default Germanic stress), OR
-#   - Second syllable (if first syllable is an unstressed prefix: bi-, ga-, fra-, etc.)
-#
-# Strategy:
-#   Step 1: Mark ALL *i after the first vowel as *ĭ (tentatively unstressed)
-#   Step 2: For bi-/ni- prefix words, also mark the prefix *i as *ĭ
-#   Step 3: For prefix words, RESTORE the second-syllable *ĭ back to *i (stressed)
-#   Step 4: Lower remaining *ĭ to *e
-# ===========================================================================
-
-# Step 1: Mark non-first-syllable *i as unstressed (*ĭ)
-# Any *i preceded by a vowel + one or more consonants is in a non-first syllable.
-# Example: *harbistaz → *harb*ĭstaz (the *i in -ist- is after *a + *rb)
-define OEUnstressedIMarking1 [
-    {*i} -> {*ĭ} || EnglishStarVocalic [EnglishStarConsonant | EnglishPalatalConsonant]+ _
-];
-
-# Step 2: For bi-/ni- prefix words, mark the prefix *i as unstressed
-# Pattern: word-initial *b/*n followed by *i followed by C+V (proving it's a prefix)
-# Example: *biginnăną → *b*ĭginnăną
-define OEUnstressedIMarking2 [
-    {*i} -> {*ĭ} || .#. [{*b} | {*n}] _ [EnglishStarConsonant | EnglishPalatalConsonant] EnglishStarVocalic
-];
-
-# Step 3: For prefix words, restore the stressed root *ĭ back to *i
-# After an unstressed prefix, the SECOND vowel is stressed.
-# Prefixes to handle:
-#   - bi-, ni- (prefix vowel is now *ĭ from step 2)
-#   - ga- (prefix vowel is *a)
-#   - fra- (prefix vowel is *a after *fr)
-# Example: *b*ĭg*ĭnnăną → *b*ĭg*innăną (restore second *ĭ)
-define OEUnstressedIMarking3 [
-    # bi-, ni- prefixes: restore *ĭ after prefix *ĭ + consonant(s)
-    {*ĭ} -> {*i} || .#. [{*b} | {*n}] {*ĭ} [EnglishStarConsonant | EnglishPalatalConsonant]+ _ ,
-    # ga- prefix: restore *ĭ after *ga + consonant(s)
-    {*ĭ} -> {*i} || .#. {*g} {*a} [EnglishStarConsonant | EnglishPalatalConsonant]+ _ ,
-    # fra- prefix: restore *ĭ after *fra + consonant(s)
-    {*ĭ} -> {*i} || .#. {*f} {*r} {*a} [EnglishStarConsonant | EnglishPalatalConsonant]+ _
-];
-
-# Combine the marking steps
-# IMPORTANT: Step 2 must run BEFORE Step 1, because after Step 1 marks the
-# root *i as *ĭ, Step 2's pattern won't match (*ĭ not in EnglishStarVocalic).
-define OEUnstressedIMarking OEUnstressedIMarking2 .o. OEUnstressedIMarking1 .o. OEUnstressedIMarking3;
-
-# Step 4: Lower unstressed *ĭ to *e
-# Only *ĭ (marked as unstressed) gets lowered; stressed *i is preserved.
-# Exception: *i preserved before palatals (-ig, -ing, -isc, -iht) — but those
-# involve palatal consonants which aren't matched by our consonant class here.
-define OEMedUnstressedILowering [
-    {*ĭ} -> {*e} || _ [EnglishStarConsonant | EnglishPalatalConsonant]
-];
-
 # R/T vol.2 p.303: "So also bi- > be-, ni 'not' > ne."
 # Unstressed prefix *i > *ĕ. Use *ĕ (e-breve) for reduced prefix vowels to mark them
 # as unstressed and exclude them from subsequent stressed-vowel changes (e.g., palatal
@@ -1558,69 +1477,19 @@ define OEPrefixAReduction [
 
 # Split into separate composed rules to avoid foma parallel rule context leakage.
 # When using [R1, R2] syntax, contextual restrictions can affect all rules.
-# Hogg (1992) p.120: "By First Fronting /a/ became /æ/ as in stressed syllables"
-# Unstressed suffix *a → *æ (parallel to stressed AFB, but applies before nasals too).
-# This feeds OEWeakTailReduction3 (*æ → *e), giving the chain: *a → *æ → *e.
-#
-# CRITICAL: Must run BEFORE OEWeakTailReduction1 ({*ă}→{*a}) to preserve the distinction
-# between original *a (e.g., in *-anăz participle suffix) and *ă (e.g., in *-jăną infinitive).
-# - *a (true short a, no breve): undergoes fronting → *æ → *e
-# - *ă (weak/reduced, with breve): skips this rule, becomes *a via Reduction1, stays *a
-#
-# This is NOT a separate sound change but an extension of AFB to unstressed pre-nasal
-# positions. AFB (line 1248) explicitly blocks before nasals, which is correct for
-# STRESSED syllables (giving OE mann not *mænn). But in UNSTRESSED syllables, fronting
-# did occur, as shown by participle *-anaz → *-æn → -en.
-#
-# Example: PGmc *funðanăz → *funðænăz → *funden (via *æ→*e)
-# Counter-example: *liznōjăną → leornian (the *ă skips this rule, stays as -ian)
-
-# SECONDARY NASALIZATION (R/T vol.2 §5.1.2, p.153):
-# "Unstressed *a was nasalized, and therefore not fronted, only if it was
-# followed by a nasal in the syllable coda."
-#
-# FIXED 2026-03-13: The original rule context was `_ {*n} .#.` which matched
-# both infinitives AND participles AFTER apocope had deleted final vowels.
-# This incorrectly nasalized participle -an- suffix, blocking fronting.
-#
-# The corrected rule runs BEFORE apocope, when final vowels are still present:
-#   - Infinitive *bakaną: matches `*a*n*ą.#.` → nasalize → bacan ✓
-#   - Participle *bakanăz: has `*a*n*ă*z.#.` → no match → fronts to -en ✓
-#
-# Examples:
-#   Infinitive *bakaną: *bak-a-ną → *bak-ą-ną (nasalized) → bacan
-#   Participle *fundanăz: *fund-an-ăz → no match → *fund-æn-ăz → funden
-define OESecondaryNasalization [
-    [{*a} | {*ă}] -> {*ą} || _ {*n} .#.
-];
-
-define OEUnstressedAFronting [
-    {*a} -> {*æ} || EnglishStarVocalic [EnglishStarConsonant | EnglishPalatalConsonant]+ _ [EnglishStarConsonant | EnglishPalatalConsonant]
-];
-
-# Secondary nasalized vowels (before coda nasal) denasalize to *a, not *ɔ̆.
-# Primary nasalized vowels (from lost nasal+fricative) become *ɔ̆.
-# R/T vol.2 §5.1.2: unstressed *a before coda nasal was nasalized, blocking fronting.
-# After blocking fronting, the nasalization is lost → plain *a.
 define OEWeakTailReduction1 [
     {*ă} -> {*a},
-    {*ą} -> {*a} || _ [{*n} | {*m}],
     {*ą} -> {*ɔ̆}
 ];
-# Word-final unstressed *ĭ → *e (Campbell §369, Hogg p.120).
-# Only targets *ĭ (marked unstressed by OEUnstressedIMarking), not stressed *i.
 define OEWeakTailReduction2 [
-    {*ĭ} -> {*e} || _ .#.
+    {*i} -> {*e} || _ .#.
 ];
 # R/T vol.2 §6.9.6: unstressed *æ merged with *e in inflectional syllables.
 # Restrict to non-initial syllables (after at least one vowel + consonant(s)).
 define OEWeakTailReduction3 [
     {*æ} -> {*e} || EnglishStarVocalic [EnglishStarConsonant | EnglishPalatalConsonant]+ _
 ];
-# NOTE: OESecondaryNasalization removed from here and moved to main pipeline
-# before OEFinalSchwaApocope. It must run while final vowels are still present
-# to distinguish infinitive *-anąˈ from participle *-anăz. See lines 1580-1597.
-define OEWeakTailReduction OEUnstressedAFronting .o. OEWeakTailReduction1 .o. OEWeakTailReduction2 .o. OEWeakTailReduction3;
+define OEWeakTailReduction OEWeakTailReduction1 .o. OEWeakTailReduction2 .o. OEWeakTailReduction3;
 
 define OEEpentheticInsertion [
     {*r} -> {*E} {*r} || (EnglishStarFrontVowel | EnglishStarBackVowel)
@@ -1709,32 +1578,6 @@ define PWGmcJGemination [
     {*ŋ} -> {*ŋ} {*ŋ} || EnglishStarShortVowel _ {*j}
 ];
 
-# Sievers' Law Syncope (PWGmc): *-CijV- → *-CjV-
-# R/T vol.2 p.157: "the sequence *-CijV- was syncopated to *-CjV-"
-# This syncope removes the Sievers' Law *i that blocked j-gemination in heavy stems.
-#
-# Chronology (R/T vol.2 pp.156-157):
-# 1. PGmc: Sievers' Law produces *-ija- after heavy stems, *-ja- after light
-# 2. PWGmc: j-gemination applies to *Cj → *CCj (light stems only — heavy stems
-#    have *Cij, so the C is not directly before j, blocking gemination)
-# 3. PWGmc: *-CijV- syncope removes the blocking *i (after gemination!)
-# 4. Later: palatalization, etc.
-#
-# Evidence this is a regular sound change (not analogical leveling):
-# - R/T explicitly calls it "syncope" and "syncopated" (p.157)
-# - Applies exceptionlessly to "every class I weak present with a heavy root
-#   syllable and all ja-stem, jan-stem, and jōn-stem nominals with heavy root
-#   syllables" (p.157)
-#
-# Example derivation:
-# PGmc *sōkijană → j-gemination BLOCKED (no *Cj) → syncope *sōkjană → OE sēċan
-#
-# Note: This rule must be ordered AFTER PWGmcJGemination (so heavy stems avoid
-# gemination) and BEFORE palatalization (so *kj → *ċ can apply).
-define SieversLawSyncope [
-    {*i} -> 0 || [EnglishStarConsonant | EnglishPalatalConsonant] _ {*j}
-];
-
 # Loss of internal j after heavy syllables; block after r.
 define OEJLossAfterHeavy [
     {*j} -> 0 || (EnglishStarLongVowel | EnglishStarDiphthong) [EnglishStarConsonantNoR | EnglishPalatalConsonant] _,
@@ -1778,33 +1621,17 @@ define OEWsPalatalUmlaut [
     {*ie} -> {*i} || _ OEHCluster EnglishStarFrontVowel
 ];
 
-# NWGmc Nasal-Spirant Lengthening (R/T vol.2 §5.1.1)
-# "The most obvious phonological innovation of the northern dialects is the loss
-# of nasals immediately preceding fricatives, with lengthening and nasalization
-# of the preceding vowel."
-# CHRONOLOGY: This is a NWGmc change, shared by OE, OF, OS. It must precede
-# OE i-umlaut, otherwise umlauted vowels like *y (from *u) won't be lengthened.
-# See DEV_NOTES.md: "NSL Chronology Bug: *funxstiz → fyxt instead of fȳst"
-define NWGmcNasalSpirantLengthening [
-    {*a} -> {*ō} || _ EnglishStarNasal EnglishStarVoicelessFricative,
-    {*e} -> {*ē} || _ EnglishStarNasal EnglishStarVoicelessFricative,
-    {*i} -> {*ī} || _ EnglishStarNasal EnglishStarVoicelessFricative,
-    {*o} -> {*ō} || _ EnglishStarNasal EnglishStarVoicelessFricative,
-    {*u} -> {*ū} || _ EnglishStarNasal EnglishStarVoicelessFricative,
-    {*æ} -> {*ē} || _ EnglishStarNasal EnglishStarVoicelessFricative
+define OENasalSpirantLengthening [
+    {*a} -> {*ā} || _ EnglishStarNasal EnglishStarFricative,
+    {*e} -> {*ē} || _ EnglishStarNasal EnglishStarFricative,
+    {*i} -> {*ī} || _ EnglishStarNasal EnglishStarFricative,
+    {*o} -> {*ō} || _ EnglishStarNasal EnglishStarFricative,
+    {*u} -> {*ū} || _ EnglishStarNasal EnglishStarFricative,
+    {*æ} -> {*ē} || _ EnglishStarNasal EnglishStarFricative
 ];
 
-define NWGmcNasalSpirantLoss [
-    EnglishStarNasal -> 0 || _ EnglishStarVoicelessFricative
-];
-
-# NWGmc Preconsonantal *x Loss (Campbell §417, R/T pp.156-158)
-# *x → ∅ before two or more consonants.
-# Examples: *funxstiz → fūstiz → fȳst, *wahstmaz → wæstm, *sehsto → sesta
-# This is a NWGmc change shared with OS (e.g. OS wastum).
-# Must follow NSL (which creates the *xCC cluster) and precede breaking/i-umlaut.
-define NWGmcPreconsonantalXLoss [
-    {*x} -> 0 || _ EnglishStarConsonant EnglishStarConsonant
+define OENasalSpirantLoss [
+    EnglishStarNasal -> 0 || _ EnglishStarFricative
 ];
 
 define OESkPalatalization [
@@ -1921,15 +1748,6 @@ define OEDentalAssimilation [
     {*θ} -> 0 || {*t} _
 ];
 
-# R/T §6.8.1: geminate consonants were degeminated next to another consonant.
-# E.g. *buttm- → *botm- (Kroonen: OE botm < *buttma-)
-# RESTRICTED: Only apply before sonorants (m, n, l, r), NOT before *j (which
-# triggers j-gemination and should preserve the geminate).
-define OESonorant [{*m}|{*n}|{*l}|{*r}];
-define OEPreconsonantalDegemination [
-    {*t} -> 0 || {*t} _ OESonorant
-];
-
 # R/T §6.4.2: *w lost after non-initial velars (after palatalization).
 # In *ngw clusters, *g is a stop: *w is lost (*singwan → singan).
 # Post-vocalic *gw: *g (= [ɣ] fricative) was lost, *w survives.
@@ -1940,6 +1758,7 @@ define OEPostVelarWLoss [
 ];
 
 define OEHLoss [
+    {*h} -> 0 || EnglishStarVocalic _ EnglishStarVocalic,
     {*x} -> 0 || EnglishStarVocalic _ EnglishStarVocalic
 ];
 
@@ -2004,13 +1823,6 @@ define EnglishProtoToOE (
     .o. NWGmcFinalLongORaising
     .o. NWGmcLongELowering
     .o. NWGmcLongENasalRounding
-    # NWGmc Nasal-Spirant Lengthening (R/T vol.2 §5.1.1): nasal loss before
-    # fricatives with compensatory lengthening. Must precede i-umlaut so that
-    # *funxstiz → *fūstiz (NSL) → *fȳst (i-umlaut), not *fynxst (wrong).
-    .o. NWGmcNasalSpirantLengthening
-    .o. NWGmcNasalSpirantLoss
-    # NWGmc *x loss before CC clusters (Campbell §417, R/T pp.156-158)
-    .o. NWGmcPreconsonantalXLoss
     .o. OEAuFronting
     .o. OEWWSimplification
     .o. OEDiphthongLeveling
@@ -2030,16 +1842,6 @@ define EnglishProtoToOE (
     # AFTER A-restoration, not before. A-restoration needs to see the weak-tail
     # endings (like *-ăz, *-ą) to determine whether to apply. Historical chronology
     # per Ringe/Taylor: §6.3 Retraction (early) → §6.8 Apocope (later).
-    #
-    # OEHeavySyllableNasalApocope placed here (2026-03-14 fix):
-    # - Apocope must run BEFORE nasalization so that infinitive *-anąˈ → *-an#
-    # - This puts *n in coda position (tautosyllabic) → triggers nasalization
-    # - Participle *-anăz still has *n before vowel (heterosyllabic) → no nasalization
-    # - Per Fulk §5.6: nasalization only before "tautosyllabic" nasal
-    # See DEV_NOTES.md "Implementation Plan: Phonologically Correct Nasalization"
-    .o. OEHeavySyllableNasalApocope
-    # OESecondaryNasalization now simply checks `_ {*n} .#.` — true coda position
-    .o. OESecondaryNasalization
     .o. OEFinalSchwaApocope
     # PWGmc j-gemination is historically a PWGmc change (R/T §3.1.2), but is
     # placed here in the pipeline because it must see *j tokens after schwa
@@ -2049,10 +1851,6 @@ define EnglishProtoToOE (
     # R/T vol.2 p.50: j-gemination operates on underlying /b/ (e.g. *habjan- → *habban-).
     # Allophonic [β] only surfaces where *b remains a singleton after gemination.
     .o. PGmcBAllophony
-    # Sievers' Law syncope: *-CijV- → *-CjV- (R/T vol.2 p.157)
-    # Must be AFTER j-gemination (heavy stems avoided gemination via blocking *i)
-    # and BEFORE palatalization (so *kj → *ċ can apply).
-    .o. SieversLawSyncope
     .o. OESkPalatalization
     .o. OEVelarPalatalization
     .o. OEPostVelarWLoss
@@ -2061,18 +1859,16 @@ define EnglishProtoToOE (
     .o. OEJClusterCoalescence
     .o. OEBackMutation
     .o. OEWsPalatalUmlaut
-    # NSL moved earlier in pipeline (NWGmc stage, before i-umlaut) — see lines 1945-1946
+    .o. OENasalSpirantLengthening
+    .o. OENasalSpirantLoss
     .o. OEWeakTailNasalLoss
     .o. OEWeightMarkers
     .o. OEHighVowelApocope
-    # OEHeavySyllableNasalApocope moved earlier — now at line ~2039 before nasalization
+    .o. OEHeavySyllableNasalApocope
     .o. OEMedialSyncope
     .o. OEDentalAssimilation
-    .o. OEPreconsonantalDegemination
     .o. OEUnstressedLongVowelShortening
     .o. OEMedUnstressedULowering
-    .o. OEUnstressedIMarking
-    .o. OEMedUnstressedILowering
     .o. OEPrefixIReduction
     .o. OEPrefixAReduction
     .o. OEWeakTailReduction
@@ -2124,11 +1920,6 @@ define EnglishAfterProtoToOEWeakTail EnglishAfterWestGermanic
     .o. NWGmcFinalLongORaising
     .o. NWGmcLongELowering
     .o. NWGmcLongENasalRounding
-    # NWGmc Nasal-Spirant Lengthening (R/T vol.2 §5.1.1)
-    .o. NWGmcNasalSpirantLengthening
-    .o. NWGmcNasalSpirantLoss
-    # NWGmc *x loss before CC clusters (Campbell §417)
-    .o. NWGmcPreconsonantalXLoss
     .o. OEAuFronting
     .o. OEWWSimplification
     .o. OEDiphthongLeveling
@@ -2150,15 +1941,14 @@ define EnglishAfterProtoToOEWeakTail EnglishAfterWestGermanic
     .o. OEJClusterCoalescence
     .o. OEBackMutation
     .o. OEWsPalatalUmlaut
-    # NSL moved earlier in pipeline (NWGmc stage)
+    .o. OENasalSpirantLengthening
+    .o. OENasalSpirantLoss
     .o. OEWeakTailNasalLoss;
 define EnglishAfterProtoToOEWeightMarkers EnglishAfterProtoToOEWeakTail .o. OEWeightMarkers;
 define EnglishAfterProtoToOEApocope EnglishAfterProtoToOEWeightMarkers .o. OEHighVowelApocope .o. OEHeavySyllableNasalApocope;
 define EnglishAfterProtoToOEWeightCleanup EnglishAfterProtoToOEApocope
     .o. OEUnstressedLongVowelShortening
     .o. OEMedUnstressedULowering
-    .o. OEUnstressedIMarking
-    .o. OEMedUnstressedILowering
     .o. OEPrefixIReduction
     .o. OEPrefixAReduction
     .o. OEWeakTailReduction
@@ -2491,6 +2281,7 @@ define GermanRemoveStars [
     {*d} -> d,
     {*f} -> f,
     {*g} -> g,
+    {*h} -> h,
     {*j} -> j,
     {*k} -> k,
     {*l} -> l,
@@ -2516,6 +2307,7 @@ define GermanRemoveStars [
     {*ʤ} -> ʤ,
     {*ʧ} -> ʧ,
     {*θ} -> θ,
+    {*þ} -> þ,
     {*ts} -> {ts}
 ];
 
