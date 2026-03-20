@@ -181,7 +181,7 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 180	Middle_Welsh	boat	45	70	ɬoŋ	ɬ o ŋ	*longā-	*longā	llong
 181	Old_Breton	boat	45	70	loko	l o k o	*longā-	*longā	locou
 182	Gaulish	boat	45	71	loŋga	l o ŋ g a	*longā-	*longā	longa
-183	Old_Irish	god, lug	46	72	lug	l u g	*lugu-	*lugus	Lug
+183	Old_Irish	god, lug	46	72	luɣ	l u ɣ	*lugu-	*lugus	Lug
 184	Old_Welsh	god, lug	46	72	ɬu:	ɬ u:	*lugu-	*lugus	Llew
 185	Gaulish	god, lug	46 	72	lugus	l u g u s	*lugu-	*lugus	Lugus
 186	Celtiberian	god, lug	46	72	lugu	l u g u	*lugu-	*lugus	lugu	attested only as dative LUGUEI
@@ -365,7 +365,7 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 364	Old_Breton	thunder	100	137	taran	t a r a n	*torano-	*toranos	taran
 365	Old_Cornish	thunder	100	137	taran	t a r a n	*torano-	*toranos	taran
 366	Gaulish	thunder	100	137	taranus	t a r a n u s	*torano-	*toranos	tarnus	From Deity name
-367	Old_Irish	beach	101	138	tra:ig	t r a: i g	*trāgi-	*trāgi	tráig
+367	Old_Irish	beach	101	138	tra:ɣ	t r a: ɣ	*trāgi-	*trāgi	tráig
 368	Middle_Welsh	beach	101	138	trei	t r e i	*trāgi-	*trāgi	trei
 369	Middle_Breton	beach	101	138	tre	t r e 	*trāgi-	*trāgi	tre
 370	Middle_Cornish	beach	101	138	trig	t r i g 	*trāgi-	*trāgi	trig
