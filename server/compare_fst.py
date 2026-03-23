@@ -97,8 +97,35 @@ def eprint(*args, **kwargs):
 # Replace unicode diacritics with ASCII equivalents for sending to the transducers
 UNICODE_MACRON_UNDER = " ̱ "[1]
 UNICODE_TILDE_OVER = " ̃"[1]
+# IPA length mark ː (U+02D0) is produced by some IPA keyboards but the Celtic
+# FSTs use precomposed macron vowels (ā ē ī ō ū) for long vowels.
+# IPA script-g ɡ (U+0261) is the official IPA symbol but the FSTs use plain g.
+_LENGTH_MARK = '\u02D0'  # ː
+_MACRON_MAP = {'a': 'ā', 'e': 'ē', 'i': 'ī', 'o': 'ō', 'u': 'ū'}
+def _expand_length_marks(s):
+    """Convert vowel + ː (IPA length mark) → precomposed macron vowel."""
+    _already_long = set('āēīōū')
+    out = []
+    for c in s:
+        if c == _LENGTH_MARK and out:
+            prev = out[-1]
+            if prev in _MACRON_MAP:
+                out[-1] = _MACRON_MAP[prev]
+            elif prev in _already_long:
+                pass  # already long macron vowel — drop the redundant ː
+            else:
+                out.append(c)
+        else:
+            out.append(c)
+    return ''.join(out)
+
 def replace_diacritics(s):
-    return s.replace(UNICODE_MACRON_UNDER, '_').replace(UNICODE_TILDE_OVER, '~').replace('_~', '~_')
+    return (_expand_length_marks(s)
+        .replace('\u0261', 'g')   # ɡ → g (IPA script g → plain g)
+        .replace(UNICODE_MACRON_UNDER, '_')
+        .replace(UNICODE_TILDE_OVER, '~')
+        .replace('_~', '~_')
+    )
 
 def replace_diacritics_forward(s):
     return s.replace('_', UNICODE_MACRON_UNDER).replace('~', UNICODE_TILDE_OVER)

@@ -194,10 +194,10 @@ define CelticProtoInput PCeltProtoInput;
 ## Surface phonotactics (baggy filters)      ##
 ##############################################
 
-# Old Irish: colon-length vowels (a: e: i: o: u:), ə, ɣ, θ, ð, ŋ.
+# Old Irish: macron long vowels (ā ē ī ō ū), ə, ɣ, θ, ð, ŋ.
 define OISurfaceVowel [
     {a} | {e} | {i} | {o} | {u} |
-    {a:} | {e:} | {i:} | {o:} | {u:} |
+    ā | ē | ī | ō | ū |
     {ə}
 ];
 define OISurfaceConsonant [
@@ -228,7 +228,7 @@ define BritSurfaceDiphthong [
 ];
 define BritSurfaceVowel [
     {a} | {e} | {i} | {o} | {u} |
-    {a:} | {e:} | {i:} | {o:} | {u:} |
+    ā | ē | ī | ō | ū |
     {ə} | BritSurfaceDiphthong
 ];
 define BritSurfaceConsonant [
@@ -295,12 +295,12 @@ define CeltibSurface CeltibSurfaceSyllable+;
 ## Old Irish transducer                      ##
 ##############################################
 
-# 0. Universal: *ɸ → 0 in all daughters.
-define PCeltPhiLoss [ {*ɸ} -> 0 ];
-
-# 0b. Universal pre-rule: initial *u before *ɸ behaves as *w in Insular Celtic
+# 0a. Universal pre-rule: initial *u before *ɸ behaves as *w in Insular Celtic
 #     (*uɸo → fo/guo). Applied before OIInitialW / BritInitialW.
 define PCeltInitialUPhi [ {*u} -> {*w} || .#. _ {*ɸ} ];
+
+# 0b. Universal: *ɸ → 0 in all daughters.
+define PCeltPhiLoss [ {*ɸ} -> 0 ];
 
 # 1. Labiovelars are Q-Celtic (merged with plain velars in Goidelic).
 define OILabioVelar [
@@ -344,7 +344,6 @@ define OIULowering [ {*u} -> {*o} || _ PCeltStarConsonant {*o} ];
 define OIMedialSLoss [ {*s} -> 0 || PCeltStarVowel _ PCeltStarVowel ];
 
 # 12. *t > *θ between vowels (*latis > lath, *brātīr > brāθīr).
-#     Applied BEFORE apocope so the right-hand vowel is still present.
 define OIMedialT [ {*t} -> {*θ} || PCeltStarVowel _ PCeltStarVowel ];
 
 # 13. *d > *ð between vowels.
@@ -360,7 +359,6 @@ define OIFinalK [
 define OIBLenition [ {*b} -> {*v} || PCeltStarVowel _ PCeltStarVowel ];
 
 # 16. Diphthong mergers in Old Irish.
-#     *au > *o (short) per TSV *baus → b o.
 define OIVowelDiphthongs [
     {*ei} -> {*ī},
     {*ai} -> {*e},
@@ -370,9 +368,26 @@ define OIVowelDiphthongs [
 ];
 
 # 17. Nasal assimilation: *n > *ŋ before *g (*longā > loŋg).
+#     Must run AFTER lenition (rules 11–15) and BEFORE *g spirantisation (18–20)
+#     so *g is still present when *n assimilates. *ŋ is NOT in PCeltStarLenCtx,
+#     so *ŋg clusters survive spirantisation intact.
 define OINasalAssimN [ {*n} -> {*ŋ} || _ {*g} ];
 
-# 18. Final-syllable apocope (three sequential passes).
+# 18. *g > *ɣ between vowels, or after *r before a vowel (*lugus>luɣ,
+#     *argantom>arɣad). *l+g (*bolgos>bolg) and *ŋ+g (*longā>loŋg) do NOT
+#     spirantise — *l is excluded here, *ŋ is excluded by OINasalAssimN.
+define OIMedialG [
+    {*g} -> {*ɣ} || PCeltStarVowel _ PCeltStarVowel,
+    {*g} -> {*ɣ} || {*r}          _ PCeltStarVowel
+];
+
+# 19. *g > *ɣ word-finally after any vowel.
+define OIFinalG [ {*g} -> {*ɣ} || PCeltStarVowel _ .#. ];
+
+# 20. *g > 0 word-finally after a long vowel (*rīgos→rī).
+define OIGLossAfterLong [ {*g} -> 0 || PCeltStarLongVowel _ .#. ];
+
+# 21. Final-syllable apocope (three sequential passes).
 #     Pass 2 drops only *s (not *m) after a vowel: handles *trīs → trī etc.
 #     *m is NOT dropped here — stem-final *m from OIMbSimpl must survive.
 define OIApocope [
@@ -383,21 +398,12 @@ define OIApocope [
     [{*ā} -> 0, {*ī} -> 0, {*u} -> 0, {*i} -> 0 || _ .#.]
 ];
 
-# 18. *g > *ɣ between vowels or after sonorant (*tigernos > tiɣern ✓).
-#     Applied AFTER apocope so it only fires on medial (not word-final) *g.
-define OIMedialG [ {*g} -> {*ɣ} || PCeltStarLenCtx _ PCeltStarVowel ];
-
-# 19. *g > *ɣ word-finally after any vowel (*lugus > luɣ, *trāgi > tra:ɣ).
-#     Applied after OIMedialG and OIApocope so stem-internal *g is already
-#     spirantised and apocope has exposed the final *g.
-define OIFinalG [ {*g} -> {*ɣ} || PCeltStarVowel _ .#. ];
-
-# 20. Strip asterisks; map long vowels to colon notation.
+# 22. Strip asterisks; map long vowels to colon notation.
 define OIRemoveStars [
-    {*a} -> a,       {*ā} -> {a:},
-    {*e} -> e,       {*ē} -> {e:},
-    {*i} -> i,       {*ī} -> ({i:} | i),
-    {*o} -> o,       {*ū} -> {u:},
+    {*a} -> a,       {*ā} -> ā,
+    {*e} -> e,       {*ē} -> ē,
+    {*i} -> i,       {*ī} -> (ī | i),
+    {*o} -> o,       {*ū} -> ū,
     {*u} -> u,
     {*b} -> b,       {*d} -> d,
     {*f} -> f,       {*g} -> g,
@@ -433,9 +439,10 @@ define OIRules [
     .o. OIBLenition
     .o. OIVowelDiphthongs
     .o. OINasalAssimN
-    .o. OIApocope
     .o. OIMedialG
     .o. OIFinalG
+    .o. OIGLossAfterLong
+    .o. OIApocope
     .o. OIRemoveStars
 ];
 
@@ -457,6 +464,10 @@ define BritLabioVelar [
 
 # 2. Initial *gd- > *d (*gdonyos > din).
 define BritGdCluster [ {*g} {*d} -> {*d} || .#. _ ];
+
+# 2b. Initial *skʷ- > *χw- BEFORE BritLabioVelar converts *kʷ→*p,
+#     so *skʷetlom → *χwetlom (MW chwedl) not *spetlom (OW).
+define BritSkwCluster [ {*s} {*kʷ} -> {*χ} {*w} || .#. _ ];
 
 # 3. Initial consonant-cluster simplifications before other initial-s rules.
 #    *sr- > *fr- (shared with Gaulish; *srognā > froin/frogna).
@@ -480,11 +491,15 @@ define BritInitialW [ {*w} -> {*gw} || .#. _ ];
 # 6. *w after a consonant > 0 (*ardwos > arð).
 define BritMedialWDrop [ {*w} -> 0 || PCeltStarConsonant _ ];
 
-# 7. *y > 0.
-define BritYDrop [ {*y} -> 0 ];
+# 7. *y > *i word-initially before a vowel (MW iant/yantus, iaul/yālos);
+#    *y > 0 elsewhere (medial *y in *olyos > ol).
+define BritYDrop [
+    {*y} -> {*i} || .#. _ PCeltStarVowel,
+    {*y} -> 0
+];
 
 # 8. *ū > *i (short i; Brittonic u-raising: *dūnom > din, *rūnā > rin).
-#    Produces short surface i, not long i:, matching all TSV daughter forms.
+#    Produces short surface i, not long ī, matching all TSV daughter forms.
 define BritUtoI [ {*ū} -> {*i} ];
 
 # 9. *mb > *m (*kambos > camm/cam in Brittonic).
@@ -514,12 +529,16 @@ define BritApocope [
     .o.
     [{*t}{*u} -> {*t} || _ .#.]
     .o.
-    [{*ā} -> 0, {*ī} -> 0, {*i} -> 0 || _ .#.]
+    [{*ā} -> 0, {*i} -> 0 || _ .#.]
     .o.
-    # *xs > 0 word-finally AFTER vowel drops so *i in *rixs → ri, not r.
-    [{*x}{*s} -> 0 || _ .#.]
+    # Drop *ī word-finally only in multi-syllabic forms (V C+ before *ī),
+    # so *bloidinī > bloiðin but monosyllabic *trī (< *trīs) keeps its *ī.
+    [{*ī} -> 0 || PCeltStarVowel PCeltStarConsonant+ _ .#.]
     .o.
-    # *ns > *s word-finally (*mīns > mī:s, *karants partial).
+    # *xs > *χ word-finally (MW χwēχ from *swexs; *natrixs > natriχ).
+    [{*x}{*s} -> {*χ} || _ .#.]
+    .o.
+    # *ns > *s word-finally (*mīns > mīs, *karants partial).
     [{*n}{*s} -> {*s} || _ .#.]
     .o.
     # *ants > 0 word-finally (*karants > kar, *tarants, *karant...).
@@ -540,7 +559,9 @@ define BritIRSyncope [ {*ī} -> 0 || _ {*r} .#. ];
 define BritLenInterD [ {*d} -> {*ð} || PCeltStarLenCtx _ PCeltStarVowel ];
 define BritLenFinalD [ {*d} -> {*ð} || PCeltStarLenCtx _ .#. ];
 define BritLenT     [ {*t} -> {*d} || PCeltStarVowel _ PCeltStarSonorant ];
-define BritLenFinalK [ {*k} -> {*χ} || PCeltStarSonorant _ .#. ];
+define BritLenFinalK  [ {*k} -> {*χ} || PCeltStarSonorant _ .#. ];
+# Final *k → *g after vowels (e.g. *drukos → drwg, *mrakis → brag).
+define BritVowelFinalK [ {*k} -> {*g} || PCeltStarVowel _ .#. ];
 define BritLenInterG [ {*g} -> {*ɣ} || PCeltStarVowel _ PCeltStarVowel ];
 # Final *t → *d only after SHORT vowels (e.g. *bitus → bid, not *brātus → braud).
 define BritLenFinalT [ {*t} -> {*d} || PCeltStarShortVowel _ .#. ];
@@ -555,16 +576,16 @@ define BritFinalNGCoal [ {*n} {*g} -> {*ŋ} || _ .#. ];
 define BritLenition [
     BritSNSimpl
     .o. BritMedialXS .o. BritFinalNGCoal .o. BritFinalNDrop .o. BritEtoIBeforeG
-    .o. BritLenInterD .o. BritLenFinalD .o. BritLenT .o. BritFinalTSpirRL .o. BritLenFinalT .o. BritLenFinalK .o. BritLenInterG
+    .o. BritLenInterD .o. BritLenFinalD .o. BritLenT .o. BritFinalTSpirRL .o. BritLenFinalT .o. BritLenFinalK .o. BritVowelFinalK .o. BritLenInterG
 ];
 
 
 define BritRemoveStars [
     {*a}  -> a,      {*ā}  -> ({au} | a | o),
-    {*e}  -> e,      {*ē}  -> {e:},
-    {*i}  -> i,      {*ī}  -> {i:},
-    {*o}  -> o,      {*ū}  -> {u:},
-    {*u}  -> (u | {u:}),
+    {*e}  -> (e | ē),  {*ē}  -> ē,
+    {*i}  -> i,      {*ī}  -> ī,
+    {*o}  -> o,      {*ū}  -> ū,
+    {*u}  -> (u | ū),
     {*oi} -> {oi},   {*aw} -> {aw},
     {*b}  -> b,      {*d}  -> (d | t),
     {*f}  -> f,      {*g}  -> (g | ɣ | 0),
@@ -573,15 +594,16 @@ define BritRemoveStars [
     {*m}  -> m,      {*n}  -> n,
     {*p}  -> (p | b),  {*r}  -> r,
     {*s}  -> s,      {*t}  -> t,
-    {*v}  -> v,      {*w}  -> u,
+    {*v}  -> v,      {*w}  -> (u | w),
     {*x}  -> x,      {*y}  -> 0,
     {*θ}  -> θ,      {*ð}  -> (ð | d),
-    {*ɣ}  -> (ɣ | 0),      {*χ}  -> χ,
+    {*ɣ}  -> (ɣ | 0),      {*χ}  -> (χ | 0),
     {*ŋ}  -> ŋ
 ];
 
 define BritRules [
     PCeltInitialUPhi
+    .o. BritSkwCluster
     .o. BritLabioVelar
     .o. BritGdCluster
     .o. BritInitialSClusters

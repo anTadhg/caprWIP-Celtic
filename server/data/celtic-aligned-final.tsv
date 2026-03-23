@@ -1,4 +1,4 @@
-ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NOTE
+ID	DOCULECT	CONCEPT	COGIDS	GLOSSID	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NOTE
 1	Old_Irish	apple	1	1	uvul	u v u l	*abalo-	*abul 	ubull
 2	Middle_Welsh	apple	1	1	aual	a u a l	*abalo-	*abul 	aual
 3	Old_Breton	apple	1	1	abal	a b a l	*abalo-	*abul 	abal
@@ -40,12 +40,12 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 39	Old_Breton	world	10	13	bit	b i t	*bitu-	*bitus	bit
 40	Old_Cornish	world	10	13	bit	b i t	*bitu-	*bitus	bit
 41	Gaulish	world	10	13	bitu	b i t u	*bitu-	*bitus 	bitus	Attested from ethnonym Bituriges
-42	Old_Irish	alive	11	14	be:u	b e: u	*biwo	*biwos	béo
+42	Old_Irish	alive	11	14	bēu	b ē u	*biwo	*biwos	béo
 43	Middle_Welsh	alive	11	14	biu	b i u	*biwo	*biwos	byw
 44	Middle_Breton	alive	11	14	biu	b i u	*biwo	*biwos	beu
 45	Old_Cornish	alive	11	14	biu	b i u	*biwo	*biwos	biu
 46	Gaulish	alive	11	15	biu	b i u 	*biwo	*biwos	biu	Only attested as Personal Name Biuonia
-47	Old_Irish	year	12	16	bli:aðan	b l i: a ð a n	*bleidanī	*bleidanī	blíadain	
+47	Old_Irish	year	12	16	blīaðan	b l ī a ð a n	*bleidanī	*bleidanī	blíadain	
 48	Old_Welsh	year	12	16	bloiðin	b l o i ð i n	*bleidanī	*bleidanī	bloidin	
 49	Old_Breton	year	12	16	bliðan	b l i ð a n	*bleidanī	*bleidanī	blidan
 50	Old_Cornish	year	12	16	bliθen	b l i θ e n	*bleidanī	*bleidanī	bliþen
@@ -58,19 +58,19 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 57	Middle_Breton	cow	14	19	bo	b o 	*bow-	*baus 	bou	From bou-tig "stable" or literally "cow house"
 58	Gaulish	cow	14	20	bo	b o	*bow-	*baus 	bo	From Personal Name Bo-marus
 59	Celtiberian	cow	14	19	bo	b o	*bow-	*baus 	bou	From bou-stom "stable"
-60	Old_Irish	brother	15	21	bra:θir	b r a: θ i r	*brātīr	*brātīr	bráthair
+60	Old_Irish	brother	15	21	brāθir	b r ā θ i r	*brātīr	*brātīr	bráthair
 61	Middle_Welsh	brother	15	21	braud	b r a u d	*brātīr	*brātīr	brawt
 62	Old_Breton	brother	15	21	brotr	b r o t r	*brātīr	*brātīr 	brotr
 63	Gaulish	brother (name)	15	22	bratr	b r a t r 	*brātīr	*brātīr 	bratr	Only attested as Personal Name Bratronos
-64	Old_Irish	judgement	16	23	bra:θ	b r a: θ	*brātu-	*brātus	bráth
+64	Old_Irish	judgement	16	23	brāθ	b r ā θ	*brātu-	*brātus	bráth
 65	Old_Welsh	judgement	16	23	braut	b r a u t	*brātu-	*brātus	braut
 66	Middle_Breton	debate	16	24	breut	b r e u t	*brātu- 	*brātus	breut
 67	Middle_Cornish	judgement	16	23	bres	b r e s	*brātu-	*brātus	bres
 68	Gaulish	judgment	16	25	brat	b r a t 	*brātu-	*brātus 	brat-	Only attested in dedication Bratou dekantem
-69	Old_Irish	assembly	17	26	da:l	d a: l	*datla-	*datlā	dál
+69	Old_Irish	assembly	17	26	dāl	d ā l	*datla-	*datlā	dál
 70	Middle_Welsh	assembly	17	26	dadl	d a d l	*datla-	*datlā	dadl
 71	Old_Breton	assembly	17	26	dadl	d a d l	*datla-	*datlā	dadl
-72	Old_Irish	God	18	27	di:a	d i: a	*deiw-	*deiwos	día
+72	Old_Irish	God	18	27	dīa	d ī a	*deiw-	*deiwos	día
 73	Old_Welsh	God	18	27	diui	d i u i	*deiw-	*deiwos	duiu
 74	Middle_Breton	God	18	27	doe	d o e	*deiw-	*deiwos	doe
 75	Old_Cornish	God	18	27	dui	d u i	*deiw-	*deiwos	duy
@@ -80,7 +80,7 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 79	Middle_Welsh	bad	19	28	drug	d r u g	*druko-	*drukos	drwg
 80	Middle_Breton	bad	19	28	druk	d r u k	*druko-	*drukos	drouk
 81	Gaulish	bad	19	28	druk	d r u k	*druko-	*drukos 	druca	Only attested in Proper Noun druka
-82	Old_Irish	fort	20	29	du:n	d u: n	*dūno-	*dūnom	dún
+82	Old_Irish	fort	20	29	dūn	d ū n	*dūno-	*dūnom	dún
 83	Middle_Welsh	fort	20	29	din	d i n	*dūno-	*dūnom	din
 84	Old_Breton	fort	20	29	din	d i n	*dūno-	*dūnom	din
 85	Middle_Cornish	fort	20	29	din	d i n	*dūno-	*dūnom	dyn
@@ -90,20 +90,20 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 89	Old_Breton	horse	21	30	eb	e b	*ekʷo-	*ekʷos	eb
 90	Gaulish	horse	21	31	epos	e p o s	*ekʷo-	*ekʷos 	epos	Attested as Proper Noun
 91	Celtiberian	horse	21	32	ekua	e k u a	*ekʷo-	*ekʷos 	ekua	Attested from Proper Noun Ekualaku
-92	Old_Irish	salmon	22	33	e:o	e: o	*esok-	*esoxs	eó
+92	Old_Irish	salmon	22	33	ēo	ē o	*esok-	*esoxs	eó
 93	Middle_Welsh	salmon	22	33	eok	e o k	*esok-	*esoxs	ehawc
 94	Middle_Breton	salmon	22	33	euk	e u k	*esok-	*esoxs	eheuc
 95	Old_Cornish	salmon	22	33	ehok	e h o k	*esok-	*esoxs	ehoc
 96	Gaulish	salmon	22	33	esox	e s o x	*esok-	*esoxs	esoks
-97	Old_Irish	bird	23	35	e:n	e: n	*ɸetno-	*ɸetnos	én
+97	Old_Irish	bird	23	35	ēn	ē n	*ɸetno-	*ɸetnos	én
 98	Middle_Welsh	bird	23	35	edn	e d n	*ɸetno-	*ɸetnos	edn
 99	Middle_Breton	bird	23	35	ezn	e z n	*ɸetno-	*ɸetnos	ezn
 100	Gaulish	bird	24	36	etnos	e t n o s	*ɸetno-	*ɸetnos 	etnos	Only Attested in Deity name Etnosus
-101	Old_Irish	hand	25	37	la:v	l a: v	*ɸlāma-	*ɸlāmā	lám
+101	Old_Irish	hand	25	37	lāv	l ā v	*ɸlāma-	*ɸlāmā	lám
 102	Old_Welsh	hand	25	37	lau	l a u	*ɸlāma-	*ɸlāmā	lau
 103	Old_Cornish	hand	25	37	lof	l o f	*ɸlāma-	*ɸlāmā	lof
 104	Gaulish	hand	25	38	lama	l a m a	*ɸlāma-	*ɸlāmā	lama	Only attested in Proper Noun Lamatutus
-105	Old_Irish	fern	26	39	ra:θ	r a: θ	*ɸrati-	*ɸratis	ráth
+105	Old_Irish	fern	26	39	rāθ	r ā θ	*ɸrati-	*ɸratis	ráth
 106	Middle_Breton	fern	26	39	reden	r e d e n	*ɸrati-	*ɸratis	reden
 107 	Old_Cornish	fern	26	39	reden	r e d e n	*ɸrati-	*ɸratis	reden
 108 	Gaulish	fern	26	39	ratis	r a t i s	*ɸrati-	*ɸratis	ratis
@@ -117,16 +117,16 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 116	Old_Breton	person	28	42	den	d e n 	*gdony-	*gdonyos	den
 117	Old_Cornish	person	28	42	den	d e n 	*gdony-	*gdonyos	den 
 118	Gaulish	person	28	43	xtonio	x t o n i o 	*gdony-	*gdonyos 	-xtonio
-119	Old_Irish	grain	29	44	gra:n	g r a: n	*grāno-	*grānom	grán
+119	Old_Irish	grain	29	44	grān	g r ā n	*grāno-	*grānom	grán
 120	Middle_Welsh	grain	29	44	graun	g r a u n	*grāno-	*grānom	grawn
 121	Old_Irish	iron	30	45	iərn 	i ə r n	*isarno-	*isarnom	iarn
 122	Middle_Welsh	iron	30	45	heiarn	h e i a r n	*isarno-	*isarnom	haearn
 123	Middle_Breton	iron	30	45	hoiarn	h o i a r n	*isarno-	*isarnom	hoiarn
 124	Gaulish	iron	30	46	isarnus	i s a r n u s	*isarno-	*isarnom	isarnus	Only attested as PN
-125	Old_Irish	everyone	31	47	ka:x	k a: x	*kʷākʷo-	*kʷākʷos	cách
+125	Old_Irish	everyone	31	47	kāx	k ā x	*kʷākʷo-	*kʷākʷos	cách
 126	Old_Welsh	everyone	31	47	paup	p a u p	*kʷākʷo-	*kʷākʷos	paup
 127	Old_Breton	everyone	31	47	pop	p o p	*kʷākʷo-	*kʷākʷos	pop
-128	Old_Irish	five	32	48	ko:ig	k o: i g	*kʷenkʷe	*kʷenkʷe	cóic
+128	Old_Irish	five	32	48	kōig	k ō i g	*kʷenkʷe	*kʷenkʷe	cóic
 129	Old_Welsh	five	32	48	pimp	p i m p	*kʷenkʷe	*kʷenkʷe	pimp
 130	Old_Breton	five	32	48	pemp	p e m p	*kʷenkʷe	*kʷenkʷe	pemp
 131	Gaulish	five	32	48	pempe	p e m p e	*kʷenkʷe	*kʷenkʷe 	pempe-
@@ -142,7 +142,7 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 141	Old_Welsh	evil	35	53	kam	k a m	*kambo	*kambos	cam
 142	Old_Breton	evil	35	53	kam	k a m	*kambo	*kambos	camm
 143	Gaulish	crooked	35	54	kambo	k a m b o	*kambo	*kambos	cambo	Only Attested as Proper noun
-144	Old_Irish	hundred	36	55	ke:d	k e: d	*kantom	*kantom	cét
+144	Old_Irish	hundred	36	55	kēd	k ē d	*kantom	*kantom	cét
 145	Old_Welsh	hundred	36	55	kant	k a n t	*kantom	*kantom	cant
 146	Old_Breton	hundred	36	55	kant	k a n t	*kantom	*kantom	cant
 147	Old_Cornish	hundred	36	55	kans	k a n s	*kantom	*kantom	cans
@@ -159,9 +159,9 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 158	Old_Irish	troop	39	59	kure	k u r e	*koryo-	*koryos	cuire
 159	Old_Welsh	clan, tribe	39	60	korð	k o r ð	*koryo-	*koryos	cordd
 160	Gaulish	clan, tribe	39	60	kor	k o r	*koryo-	*koryos	cor-	Attested in ethnonyms such as Vocorii and personal name Atikoryos
-161	Old_Irish	trench	40	61	kri:k	k r i: k	*krīkʷ-	*krīkʷā	crích
-162	Old_Welsh	trench	40	61	kri:p	k r i: p	*krīkʷ-	*krīkʷā	crip
-163	Middle_Breton	trench	40	61	kri:b	k r i: b	*krīkʷ-	*krīkʷā	crib
+161	Old_Irish	trench	40	61	krīk	k r ī k	*krīkʷ-	*krīkʷā	crích
+162	Old_Welsh	trench	40	61	krīp	k r ī p	*krīkʷ-	*krīkʷā	crip
+163	Middle_Breton	trench	40	61	krīb	k r ī b	*krīkʷ-	*krīkʷā	crib
 164	Old_Irish	land, church	41	62	lan	l a n	*landā- 	*landā	lann
 165	Old_Welsh	churchyard	41	62	lan	l a n	*landā-	*landā	llan
 166	Gaulish	land	41	62	landā	l a n d ā	*landā-	*landā	landā	Reconstructed
@@ -180,21 +180,21 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 179	Old_Irish	boat	45	70	loŋg	l o ŋ g	*longā-	*longā	long
 180	Middle_Welsh	boat	45	70	ɬoŋ	ɬ o ŋ	*longā-	*longā	llong
 181	Old_Breton	boat	45	70	loko	l o k o	*longā-	*longā	locou
-182	Gaulish	boat	45	71	loŋga	l o ŋ g a	*longā-	*longā	longa
+182	Gaulish	boat	45	70	loŋga	l o ŋ g a	*longā-	*longā	longa
 183	Old_Irish	god, lug	46	72	luɣ	l u ɣ	*lugu-	*lugus	Lug
-184	Old_Welsh	god, lug	46	72	ɬu:	ɬ u:	*lugu-	*lugus	Llew
+184	Old_Welsh	god, lug	46	72	ɬū	ɬ ū	*lugu-	*lugus	Llew
 185	Gaulish	god, lug	46 	72	lugus	l u g u s	*lugu-	*lugus	Lugus
 186	Celtiberian	god, lug	46	72	lugu	l u g u	*lugu-	*lugus	lugu	attested only as dative LUGUEI
-187	Old_Irish	noble, chief	47	73	ma:l	m a: l	*maglo-	*maglos	mál
+187	Old_Irish	noble, chief	47	73	māl	m ā l	*maglo-	*maglos	mál
 188	Middle_Welsh	chief, lord	47	73	mail	m a i l	*maglo-	*maglos	mael
 189	Middle_Breton	noble (suffix)	47	74	mail	m a i l	*maglo-	*maglos	mael	suffix in personal names
-190	Gaulish	noble	47	75	magalos	m a g a l o s	*maglo-	*maglos	magalos	Only attested as deity name 
+190	Gaulish	noble	47	7	magalos	m a g a l o s	*maglo-	*maglos	magalos	Only attested as deity name 
 191	Old_Irish	son	48	76	mak	m a k	*makʷo-	*makʷos	macc
 192	Old_Welsh	son	48	76	map	m a p	*makʷo-	*makʷos	map
 193	Old_Breton	son	48	76	mab	m a b	*makʷo-	*makʷos	mab
 194	Old_Cornish	son	48	76	mab	m a b	*makʷo-	*makʷos	mab
 195	Gaulish	son	48	77	mapos	m a p o s	*makʷo-	*makʷos	map	Only attested in diety name Maponos
-196	Old_Irish	mother	49	78	ma:θir	m a: θ i r	*māter-	*mātīr	máthir
+196	Old_Irish	mother	49	78	māθir	m ā θ i r	*māter-	*mātīr	máthir
 197	Old_Welsh	bee 	49	78	modr	m o d r	*māter-	*mātīr	modr	From Modrydaf, meaning Queen Bee, literally mother bee (modr + gydaf)
 198	Gaulish	mother	49	78	mātīr	m ā t ī r	*māter-	*mātīr	matir
 199	Old_Irish	honey	50	79	mil	m i l	*mel-	*meli	mil
@@ -202,30 +202,30 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 201	Old_Cornish	honey	50	79	mel	m e l	*mel-	*meli	mel
 202	Old_Breton	honey	50	79	mel	m e l	*mel-	*meli	mel
 203	Gaulish	honey	50	79	meli	m e l i	*mel-	*meli	meli
-204	Old_Irish	wish	51	80	mi:an	m i: a n	*mēno-	*mēnom	mían
-205	Middle_Welsh	delight	51	81	mu:in	m u: i n	*mēno-	*mēnom	mwyn
-206	Old_Irish	month	52	82	mi:	m i:	*mīns-	*mīns	mí
-207	Middle_Welsh	month	52	82	mi:s	m i: s	*mīns-	*mīns	mis
-208	Old_Breton	month	52	82	mi:s	m i: s	*mīns-	*mīns	mis
-209	Old_Cornish	month	52	82	mi:s	m i: s	*mīns-	*mīns	mis
+204	Old_Irish	wish	51	80	mīan	m ī a n	*mēno-	*mēnom	mían
+205	Middle_Welsh	delight	51	81	mūin	m ū i n	*mēno-	*mēnom	mwyn
+206	Old_Irish	month	52	82	mī	m ī	*mīns-	*mīns	mí
+207	Middle_Welsh	month	52	82	mīs	m ī s	*mīns-	*mīns	mis
+208	Old_Breton	month	52	82	mīs	m ī s	*mīns-	*mīns	mis
+209	Old_Cornish	month	52	82	mīs	m ī s	*mīns-	*mīns	mis
 210	Old_Irish	pig	53	83	muk	m u k	*mokku-	*mukkus	mucc
-211	Old_Welsh	pig	53	83	mo:χ	m o: χ	*mokku-	*mukkus	moch
-212	Old_Breton	pig	53	83	mo:χ	m o: χ	*mokku-	*mukkus	moch
+211	Old_Welsh	pig	53	83	mōχ	m ō χ	*mokku-	*mukkus	moch
+212	Old_Breton	pig	53	83	mōχ	m ō χ	*mokku-	*mukkus	moch
 213	Old_Cornish	pig	53	83	moːχ	m oː χ	*mokku-	*mukkus	mogh
 214	Old_Irish	malt	54	84	mraix	m r a i x	*mraki-	*mrakis	mraich
 215	Middle_Welsh	malt	54	84	brag	b r a g	*mraki-	*mrakis	brag
 216 	Middle_Cornish	malt	54	84	brag	b r a g	*mraki-	*mrakis	brag
-217 	Old_Irish	smoke	55	85	mu:x	m u: x	*muk-	*muk?	múch	Gender of reconstruction is uncertain
-218 	Middle_Welsh	smoke	55	85	mu:g	m u: g	*muk-	*muk?	mwg	Gender of reconstruction is uncertain
+217 	Old_Irish	smoke	55	85	mūx	m ū x	*muk-	*muk?	múch	Gender of reconstruction is uncertain
+218 	Middle_Welsh	smoke	55	85	mūg	m ū g	*muk-	*muk?	mwg	Gender of reconstruction is uncertain
 219 	Middle_Breton	smoke	55	85	mog	m o g	*muk-	*muk?	mog	Gender of reconstruction is uncertain
-220	Middle_Cornish	smoke	55	85	mu:g	m u: g	*muk-	*muk?	mok	Gender of reconstruction is uncertain
+220	Middle_Cornish	smoke	55	85	mūg	m ū g	*muk-	*muk?	mok	Gender of reconstruction is uncertain
 221 	Old_Irish	serpent	56	86	naθir	n a θ i r	*natrik-	*natrixs	nathir
 222 	Middle_Welsh	serpent	56	86	neidr	n e i d r	*natrik-	*natrixs	neidr
 223 	Middle_Breton	serpent	56	86	nazr	n a z r	*natrik-	*natrixs	nazr
 224 	Old_Cornish	serpent	56	86	nader	n a d e r	*natrik-	*natrixs	nader
-225 	Old_Irish	boat	57	87	nau	n a u	*nāwā	*nāwā	nau
-226 	Middle_Welsh	boat	57	87	noe	n o e	*nāwā	*nāwā	noe
-227 	Middle_Breton	boat	57	87	nev	n e v	*nāwā	*nāwā	nev
+225 	Old_Irish	boat	57	70	nau	n a u	*nāwā	*nāwā	nau
+226 	Middle_Welsh	boat	57	70	noe	n o e	*nāwā	*nāwā	noe
+227 	Middle_Breton	boat	57	70	nev	n e v	*nāwā	*nāwā	nev
 228 	Old_Irish	heaven	58	88	nev	n e v	*nemos-	*nemos	nem
 229 	Old_Welsh	heaven	58	88	nem	n e m	*nemos-	*nemos	nem
 230 	Old_Breton	heaven	58	88	nem	n e m	*nemos-	*nemos	nem
@@ -236,22 +236,22 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 235 	Middle_Cornish	strength	59	89	nerθ	n e r θ	*nerto-	*nertom	nerth
 236 	Gaulish	strength	59	90	nerto	n e r t o	*nerto-	*nertom	nerto-	Only attested in Proper Noun 'Nertomaros
 237 	Celtiberian	strength	59	91	nerto	n e r t o	*nerto-	*nertom	nerto-	Only attested in Place Name 'Nertobis
-238	Old_Irish	nine	60	92	no:i	n o: i	*nowan	*nowan	noí
-239	Middle_Welsh	nine	60	92	nau:	n a u:	*nowan	*nowan	naw
-240	Old_Breton	nine	60	92	nau:	n a u:	*nowan	*nowan	nau
-241	Middle_Cornish	nine	60	92	nau:	n a u:	*nowan	*nowan	naw
+238	Old_Irish	nine	60	92	nōi	n ō i	*nowan	*nowan	noí
+239	Middle_Welsh	nine	60	92	naū	n a ū	*nowan	*nowan	naw
+240	Old_Breton	nine	60	92	naū	n a ū	*nowan	*nowan	nau
+241	Middle_Cornish	nine	60	92	naū	n a ū	*nowan	*nowan	naw
 242	Old_Irish	all	61	93	ule	u l e	*olyo-	*olyos	uile
 243	Middle_Welsh	all	61	93	ol	o l	*olyo-	*olyos	oll
 244	Old_Breton	all	61	93	hol	h o l	*olyo-	*olyos	holl
 245	Middle_Cornish	all	61	93	hol	h o l	*olyo-	*olyos	hol
 246	Gaulish	all	61	93	olon	o l o n	*olyo-	*olyos	ollon
-247	Old_Irish	lamb	62	94	u:an	u: a n	*owigno-	*owignos	úan
+247	Old_Irish	lamb	62	94	ūan	ū a n	*owigno-	*owignos	úan
 248	Middle_Welsh	lamb	62	94	oen	o e n	*owigno-	*owignos	oin
 249	Middle_Breton	lamb	62	94	oen	o e n	*owigno-	*owignos	oin
 250	Old_Cornish	lamb	62	94	oin	o i n	*owigno-	*owignos	oin
-251	Old_Irish	high	63	95	u:asal	u: a s a l	*ouxselo-	*ouxselos	úasal
-252	Middle_Welsh	high	63	95	uχel	u χ e l	*ouxselo-	*ouxselos	uchel
-253	Old_Breton	high	63	95	uχel	u χ e l	*ouxselo-	*ouxselos	uchel
+251	Old_Irish	high	63	3	ūasal	ū a s a l	*ouxselo-	*ouxselos	úasal
+252	Middle_Welsh	high	63	3	uχel	u χ e l	*ouxselo-	*ouxselos	uchel
+253	Old_Breton	high	63	3	uχel	u χ e l	*ouxselo-	*ouxselos	uchel
 254	Gaulish	high	63	96	uxelo	u x e l o	*ouxselo-	*ouxselos	uxello-	From Toponym Uxello-dunum
 255	Old_Irish	eight	64	97	oxt	o x t	*oxtū	*oxtū	ocht
 256	Old_Welsh	eight	64	97	oiθ	o i θ	*oxtū	*oxtū	oith
@@ -266,7 +266,7 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 265	Middle_Breton	law	66	99	rez	r e z	*rextu-	*rextus	rez
 266	Gaulish	law	66	99	rextu	r e x t u	*rextu-	*rextus	rextu-	From rextu-genos, a personal name
 267	Celtiberian	law	66	99	retu	r e t u	*rextu-	*rextus	retu-	From retu-keno, a personal name
-268	Old_Irish	king	67	100	ri:	r i:	*rig-	*rixs	rí
+268	Old_Irish	king	67	100	rī	r ī	*rig-	*rixs	rí
 269	Old_Welsh	king	67	100	ri	r i	*rig-	*rixs	ri
 270	Gaulish	king	67	100	rix	r i x	*rig-	*rixs	rix
 271	Celtiberian	king	67	100	reikis	r e i k i s	*rig-	*rixs	reikis
@@ -274,10 +274,10 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 273	Middle_Welsh	wheel	70	101	rot	r o t	*roto-	*rotos	rot
 274	Middle_Breton	wheel	70	101	rot	r o t	*roto-	*rotos	rot
 275	Gaulish	wheel	70	101	roto	r o t o	*roto-	*rotos	roto	From place name "Roto-magnus"
-276	Old_Irish	red	71	102	ru:að	r u: a ð	*rowdo-	*rowdos	rúad
+276	Old_Irish	red	71	102	rūað	r ū a ð	*rowdo-	*rowdos	rúad
 277	Old_Welsh	red	71	102	rud	r u d	*rowdo-	*rowdos	rud
 278	Old_Breton	red	71	102	rud	r u d	*rowdo-	*rowdos	rud
-279	Old_Irish	secret	72	103	ru:n	r u: n	*rūnā-	*rūnā	rún
+279	Old_Irish	secret	72	103	rūn	r ū n	*rūnā-	*rūnā	rún
 280	Middle_Welsh	secret	72	103	rin	r i n	*rūnā-	*rūnā	rin
 281	Middle_Breton	secret	72	103	rin	r i n	*rūnā-	*rūnā	rin
 282	Gaulish	secret	72	103	runus	r u n u s	*rūnā-	*rūnā	runus	From Proper Noun Cob-runus
@@ -287,7 +287,7 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 286	Old_Irish	hunt	74	105	selg	s e l g	*selgā-	*selgā	selg
 287	Old_Welsh	hunt	74	105	helɣa	h e l ɣ a	*selgā-	*selgā	helgha
 288	Middle_Breton	hunt	74	105	hemolχ	h e m o l χ	*selgā-	*selgā	hemolch
-289	Old_Irish	path	75	106	se:d	s e: d	*sentu-	*sentus	sét
+289	Old_Irish	path	75	106	sēd	s ē d	*sentu-	*sentus	sét
 290	Middle_Welsh	path	75	106	hint	h i n t	*sentu-	*sentus	hint
 291	Old_Breton	path	75	106	hint	h i n t	*sentu-	*sentus	hint
 292	Middle_Cornish	path	75	106	hins	h i n s	*sentu-	*sentus	hins
@@ -299,53 +299,53 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 298	Old_Irish	heel	77	109	ser	s e r	*sɸerā-	*sɸerā	seir
 299	Middle_Welsh	ankle	77	110	fer	f e r	*sɸerā-	*sɸerā	ffer
 300	Old_Cornish	ankle	77	110	fer	f e r	*sɸerā-	*sɸerā	fer
-301	Old_Irish	descendants	78	111	si:l	s i: l	*sīlo- 	*sīlom	síl
-302	Middle_Welsh	race, lineage	78	111	hi:l	h i: l	*sīlo-	*sīlom	hil
+301	Old_Irish	descendants	78	111	sīl	s ī l	*sīlo- 	*sīlom	síl
+302	Middle_Welsh	race, lineage	78	111	hīl	h ī l	*sīlo-	*sīlom	hil
 303	Old_Irish	this	79	112	sin	s i n	*sindo-	*sindos	sin
 304	Old_Welsh	this	79	112	hin	h i n	*sindo-	*sindos	hinn
 305	Gaulish	this	79	112	sind	s i n d	*sindo-	*sindos	sinde	Declines for gender, case and number unlike Brythonic and Irish
-306	Old_Irish	story	80	113	ske:l	s k e: l	*skʷetlo-	*skʷetlom	scél
+306	Old_Irish	story	80	113	skēl	s k ē l	*skʷetlo-	*skʷetlom	scél
 307	Middle_Welsh	story	80	113	χwedl	χ w e d l	*skʷetlo-	*skʷetlom	chwedl
-308	Old_Irish	shadow	81	114	ska:θ	s k a: θ	*skātu-	*skātu	scáth
-309	Middle_Welsh	shadow	81	114	isga:d	i s g a: d	*skātu-	*skātu	ysgawd
+308	Old_Irish	shadow	81	114	skāθ	s k ā θ	*skātu-	*skātu	scáth
+309	Middle_Welsh	shadow	81	114	isgād	i s g ā d	*skātu-	*skātu	ysgawd
 310	Old_Cornish	shadow	81	115	skod	s k o d	*skātu-	*skātu	scod
-311	Old_Irish	tired	82	116	ski:θ	s k i: θ	*skīto-	*skītos	scíth
+311	Old_Irish	tired	82	116	skīθ	s k ī θ	*skīto-	*skītos	scíth
 312	Middle_Welsh	tired	82	116	eskud	e s k u d	*skīto-	*skītos	escud
 313	Middle_Breton	tired	82	116	eskuit	e s k u i t	*skīto-	*skītos	escuit
 314	Middle_Cornish	tired	82	116	uskis	u s k i s	*skīto-	*skītos	uskys
 315	Old_Irish	stalk	83	117	slat	s l a t	*slattā-	*slattā	slat
 316	Old_Breton	stalk	83	117	laθ	l a θ	*slattā-	*slattā	llath
 317	Middle_Cornish	stalk	83	117	laθ	l a θ	*slattā-	*slattā	lath
-318	Old_Irish	blackberry	84	118	sme:r	s m e: r	*smiyoro-	*smiyoros	smér
+318	Old_Irish	blackberry	84	118	smēr	s m ē r	*smiyoro-	*smiyoros	smér
 319	Middle_Welsh	blackberry	84	118	muiar	m u i a r	*smiyoro-	*smiyoros	mwyar
 320	Middle_Breton	blackberry	84	118	mouar	m o u a r	*smiyoro-	*smiyoros	mouar
-321	Old_Irish	nose	85	119	sro:n	s r o: n	*srognā-	*srognā	srón
+321	Old_Irish	nose	85	119	srōn	s r ō n	*srognā-	*srognā	srón
 322	Middle_Welsh	nose 	85	119	froin	f r o i n	*srognā-	*srognā	ffroen
-323	Old_Breton	nose	86	120	fron	f r o n	*srognā-	*srognā	fron
-324	Gaulish	nose	86	120	frogna	f r o g n a	*srognā-	*srognā	frogna
+323	Old_Breton	nose	85	119	fron	f r o n	*srognā-	*srognā	fron
+324	Gaulish	nose	85	119	frogna	f r o g n a	*srognā-	*srognā	frogna
 325	Old_Irish	love	87	121	serk	s e r k	*sterkā-	*sterkā	serc
 326	Middle_Welsh	love	87	121	serχ	s e r χ	*sterkā-	*sterkā	serch
 327	Middle_Breton	concubine	87	122	serχ	s e r χ	*sterkā-	*sterkā	serc'h
 328	Old_Irish	valley	88	123	sraθ 	s r a θ	*strato-	*stratos	srath
 329	Middle_Welsh	valley	88	123	istrad	i s t r a d	*strato-	*stratos	ystrad
 330	Middle_Breton	bottom	88	124	strad	s t r a d	*strato-	*stratos	strad
-331	Old_Irish	treasure	89	125	se:d	s e: d	*swanto-	*swantos	sét
+331	Old_Irish	treasure	89	125	sēd	s ē d	*swanto-	*swantos	sét
 332	Middle_Welsh	desire	89	126	χwant	χ w a n t	*swanto-	*swantos	chwant
 333	Middle_Breton	treasure	89	125	χoant	χ o a n t	*swanto-	*swantos	c'hoant
 334	Old_Irish	turn, moment	90	127	sel	s e l	*swelo-	*swelos	sel
 335	Middle_Welsh	turn, course	90	127	χwil	χ w i l	*swelo-	*swelos	chwyl
 336	Middle_Breton	turn, moment	90	127	hoalat	h o a l a t	*swelo-	*swelos	hoalat
-337	Old_Irish	six	91	128	se:	s e:	*swexs	*swexs	sé
-338	Middle_Welsh	six	91	128	χwe:χ	χ w e: χ	*swexs	*swexs	chwech
+337	Old_Irish	six	91	128	sē	s ē	*swexs	*swexs	sé
+338	Middle_Welsh	six	91	128	χwēχ	χ w ē χ	*swexs	*swexs	chwech
 339	Old_Breton	six	91	128	hue	h u e	*swexs	*swexs	hue
-340	Middle_Cornish	six	91	128	we:	w e:	*swexs	*swexs	whe
+340	Middle_Cornish	six	91	128	wē	w ē	*swexs	*swexs	whe
 341	Gaulish	six	91	128	suex	s u e x	*swexs	*swexs	suexos
 342	Celtiberian	six	91	128	sues	s u e s	*swexs	*swexs	sues
 343	Old_Irish	time	92	129	tan	t a n	*tanā-	*tanā	tan
 344	Middle_Welsh	time	92	129	tan	t a n	*tanā-	*tanā	tan
 345	Old_Breton	time	92	129	tan	t a n	*tanā-	*tanā	tan
 346	Old_Irish	tongue	93	130	teŋge	t e ŋ g e	*tangʷāt-	*tangʷāts	tengae
-347	Old_Welsh	tongue	93	130	tauau:t	t a u a u: t	*tangʷāt-	*tangʷāts	tauawt
+347	Old_Welsh	tongue	93	130	tauaūt	t a u a ū t	*tangʷāt-	*tangʷāts	tauawt
 348	Middle_Breton	tongue	93	130	teuot	t e u o t	*tangʷāt-	*tangʷāts	teaut
 349	Old_Irish	poet	94	131	taðg	t a ð g	*tasko-	*taskos	Tadg	
 350	Gaulish	badger	94	132	taskos	t a s k o s	*tasko-	*taskos	Tascos
@@ -356,23 +356,23 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 355	Middle_Welsh	lord	97	134	teern	t e e r n	*tigerno-	*tigernos	teern
 356	Old_Breton	lord	97	134	tiarn	t i a r n	*tigerno-	*tigernos	tiarn
 357	Gaulish	lord	97	134	tigernos	t i g e r n o s	*tigerno-	*tigernos	tigernos	From Toponym Castrum Tigernum
-358	Old_Irish	land	98	135	ti:r	t i: r	*tīros-	*tīros	tír
-359	Old_Welsh	land	98	135	ti:r	t i: r	*tīros-	*tīros	tir
-360	Middle_Breton	land	98	135	ti:r	t i: r	*tīros-	*tīros	tir
-361	Old_Cornish	land	98	135	ti:r	t i: r	*tīros-	*tīros	tir
+358	Old_Irish	land	98	135	tīr	t ī r	*tīros-	*tīros	tír
+359	Old_Welsh	land	98	135	tīr	t ī r	*tīros-	*tīros	tir
+360	Middle_Breton	land	98	135	tīr	t ī r	*tīros-	*tīros	tir
+361	Old_Cornish	land	98	135	tīr	t ī r	*tīros-	*tīros	tir
 362	Old_Irish	thunder	100	137	toran	t o r a n	*torano-	*toranos	torann
 363	Middle_Welsh	thunder	100	137	taran	t a r a n	*torano-	*toranos	taran
 364	Old_Breton	thunder	100	137	taran	t a r a n	*torano-	*toranos	taran
 365	Old_Cornish	thunder	100	137	taran	t a r a n	*torano-	*toranos	taran
 366	Gaulish	thunder	100	137	taranus	t a r a n u s	*torano-	*toranos	tarnus	From Deity name
-367	Old_Irish	beach	101	138	tra:ɣ	t r a: ɣ	*trāgi-	*trāgi	tráig
+367	Old_Irish	beach	101	138	trāɣ	t r ā ɣ	*trāgi-	*trāgi	tráig
 368	Middle_Welsh	beach	101	138	trei	t r e i	*trāgi-	*trāgi	trei
 369	Middle_Breton	beach	101	138	tre	t r e 	*trāgi-	*trāgi	tre
 370	Middle_Cornish	beach	101	138	trig	t r i g 	*trāgi-	*trāgi	trig
-371	Old_Irish	three	102	139	tri:	t r i:	*trīs	*trīs	trí
-372	Middle_Welsh	three	102	139	tri:	t r i:	*trīs	*trīs	tri
-373	Middle_Breton	three	102	139	tri:	t r i:	*trīs	*trīs	tri
-374	Middle_Cornish	three	102	139	tri:	t r i:	*trīs	*trīs	try
+371	Old_Irish	three	102	139	trī	t r ī	*trīs	*trīs	trí
+372	Middle_Welsh	three	102	139	trī	t r ī	*trīs	*trīs	tri
+373	Middle_Breton	three	102	139	trī	t r ī	*trīs	*trīs	tri
+374	Middle_Cornish	three	102	139	trī	t r ī	*trīs	*trīs	try
 375	Gaulish	three	102	139	treis	t r e i s	*trīs	*trīs	treis
 376	Old_Irish	wave	103	140	ton	t o n	*tundā-	*tundā	tonn
 377	Middle_Welsh	wave	103	140	ton	t o n	*tundā-	*tundā	tonn
@@ -390,16 +390,16 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 389	Gaulish	over, on	105	142	ver	v e r	*uɸer-	*uɸer	ver	From PN Ver-cingeto-rix
 390	Celtiberian	over, on	105	142	uer	u e r	*uɸer-	*uɸer	uer	From UER-AMOM "highest"
 391	Old_Irish	weak	106	143	fan	f a n	*wasno-	*wasnos	fann
-392	Middle_Welsh	weak	106	143	gu:an	g u: a n	*wasno-	*wasnos	gwan
+392	Middle_Welsh	weak	106	143	gūan	g ū a n	*wasno-	*wasnos	gwan
 393	Old_Breton	weak	106	143	guenion	g u e n i o n	*wasno-	*wasnos	guenion
 394	Old_Cornish	weak	106	143	guan	g u a n	*wasno-	*wasnos	guan
-395	Old_Irish	cause, reason	107	144	fa:θ	f a: θ	*wātu-	*wātus	fáth
-396	Middle_Welsh	poem	107	145	gu:au:d	g u: a u: d	*wātu-	*wātus	gwawd
-397	Old_Irish	wild	108	146	fi:að	f i: a ð	*weidu-	*weidus	fíad
+395	Old_Irish	cause, reason	107	144	fāθ	f ā θ	*wātu-	*wātus	fáth
+396	Middle_Welsh	poem	107	145	gūaūd	g ū a ū d	*wātu-	*wātus	gwawd
+397	Old_Irish	wild	108	146	fīað	f ī a ð	*weidu-	*weidus	fíad
 398	Middle_Welsh	wild	108	146	guið	g u i ð	*weidu-	*weidus	gwydd
 399	Old_Breton	wild	108	146	guiod	g u i o d	*weidu-	*weidus	guiod
 400	Old_Cornish	wild	108	146	guit	g u i t	*weidu-	*weidus	guit
-401	Old_Irish	wagon	109	147	fe:n	f e: n	*wegno-	*wegnos	fén
+401	Old_Irish	wagon	109	147	fēn	f ē n	*wegno-	*wegnos	fén
 402	Old_Irish	blood	110	149	ful	f u l	*woli-	*wolis	fuil
 403	Middle_Welsh	blood	110	150	gueli	g u e l i	*woli-	*wolis	gweli
 404	Middle_Cornish	blood	110	1550	goli	g o l i	*woli-	*wolis	goly
@@ -413,10 +413,10 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 412	Old_Cornish	man	112	152	gur	g u r	*wiro-	*wiros	gur
 413	Gaulish	man	112	152	uiros	u i r o s	*wiro-	*wiros	uiro
 414	Celtiberian	man 	112	152	uiros	u i r o s	*wiro-	*wiros	uiros
-415	Old_Irish	true	113	153	fi:r	f i: r	*wīro-	*wīros	fír
-416	Middle_Welsh	true	113	153	gui:r	g u i: r	*wīro-	*wīros	gwir
-417	Old_Breton	true	113	153	gui:r	g u i: r	*wīro-	*wīros	guir
-418	Old_Cornish	true	113	153	gui:r	g u i: r	*wīro-	*wīros	guir
+415	Old_Irish	true	113	153	fīr	f ī r	*wīro-	*wīros	fír
+416	Middle_Welsh	true	113	153	guīr	g u ī r	*wīro-	*wīros	gwir
+417	Old_Breton	true	113	153	guīr	g u ī r	*wīro-	*wīros	guir
+418	Old_Cornish	true	113	153	guīr	g u ī r	*wīro-	*wīros	guir
 419	Old_Irish	wet	114	154	fliux	f l i u x	*wlikʷo-	*wlikʷos	fliuch
 420	Old_Welsh	wet	114	154	gulip	g u l i p	*wlikʷo-	*wlikʷos	gulip
 421	Old_Breton	wet	114	154	gulip	g u l i p	*wlikʷo-	*wlikʷos	gulip
@@ -424,18 +424,18 @@ ID	DOCULECT	CONCEPT	GLOSSID	COGIDS	IPA	TOKENS	PROTOSTEM	PROTOFORM	COUNTERPART	NO
 423	Old_Irish	band, troop	115	155	foren	f o r e n	*worīnā-	*worīnā	foirenn
 424	Old_Welsh	band, troop	115	155	guerin	g u e r i n	*worīnā-	*worīnā	guerin
 425	Old_Breton	band, troop	115	155	guerin	g u e r i n	*worīnā-	*worīnā	guerin
-426	Old_Irish	root	116	156	fre:n	f r e: n	*wridā-	*wridā	frén
+426	Old_Irish	root	116	156	frēn	f r ē n	*wridā-	*wridā	frén
 427	Middle_Welsh	root	116	156	gureið	g u r e i ð	*wridā-	*wridā	gwreidd
 428	Middle_Breton	root	116	156	gruizyen	g r u i z y e n	*wridā-	*wridā	gruizyen
 429	Old_Cornish	root	116	156	gureiten	g u r e i t e n	*wridā-	*wridā	gwreiten
-430	Old_Irish	worship	117	157	a:l	a: l	*yālo-	*yālos	áil
+430	Old_Irish	worship	117	157	āl	ā l	*yālo-	*yālos	áil
 431	Middle_Welsh	worship	117	157	iaul	i a u l	*yālo-	*yālos	iawl
-432	Old_Irish	jealousy	118	158	e:d	e: d	*yantu-	*yantus	ét
+432	Old_Irish	jealousy	118	158	ēd	ē	*yantu-	*yantus	ét
 433	Middle_Welsh	jealousy	118	158	iant	i a n t	*yantu-	*yantus	iant
 434	Old_Irish	ice	119	159	eɣ	e ɣ	*yegi-	*yegis	aig
 435	Middle_Welsh	ice	119	159	ia	i a 	*yegi-	*yegis	ia
 436	Middle_Breton	cold	119	160	yen	y e n	*yegi-	*yegis	yen
-437	Old_Irish	young	120	161	o:g	o: g	*yuwanko-	*yuwankos	óc
+437	Old_Irish	young	120	161	ōg	ō g	*yuwanko-	*yuwankos	óc
 438	Middle_Welsh	young	120	161	iueank	i u e a n k	*yuwanko-	*yuwankos	ieuanc
 439	Middle_Breton	young	120	161	iouank	i o u a n k	*yuwanko-	*yuwankos	youanc
 440	Old_Cornish	young	120	161	iouenk	i o u e n k	*yuwanko-	*yuwankos	iouenc
