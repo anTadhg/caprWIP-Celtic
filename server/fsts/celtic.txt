@@ -444,12 +444,10 @@ define OIYVocal [ {*y} -> {*e} || PCeltStarConsonant _ PCeltStarVowel ];
 define OIYDrop [ {*y} -> 0 ];
 
 # 6.12 Nasal-anterior mutations.
-#      Word-final *-ants → *-a (paradigm neutralization).
 #      Medial *-ant- before vowel → *-ād- or *-ēd- (with compensatory lengthening).
 #      *-ent- before vowel → *-ēd-.
 #      Src: GOI §211–213
 define OINasalAnt [
-    {*a}{*n}{*t}{*s} -> {*a}              || _ .#.,
     {*a}{*n}{*t}     -> ({*ē}d | {*a}d)   || _ PCeltStarVowel,
     {*a}{*n}{*k}     -> ({*ē}g | {*a}g)   || _ PCeltStarVowel,
     {*e}{*n}{*t}     -> {*ē}d             || _ PCeltStarVowel
@@ -659,6 +657,7 @@ define OIRules [
     .o. OIEBreaking
     .o. OIIWDiphthong
     .o. OIMedialWDrop
+    .o. OIVowelDiphthongs
     .o. OIMedialWVocal
     .o. OIORaising
     .o. OIYVocal
@@ -673,12 +672,11 @@ define OIRules [
     .o. OIMedialD
     .o. OIFinalK
     .o. OIBLenition
-    .o. OIVowelDiphthongs
+    .o. OIMLenition
     .o. OICompLengthening
     .o. OINasalAssimN
     .o. OIMedialG
     .o. OIFinalG
-    .o. OIMLenition
     .o. OIAUShorten
     .o. OIXsLoss
     .o. OIApocope
@@ -698,30 +696,20 @@ define MiddleIrish OldIrish;
 ##                                                          ##
 ##   All changes from Proto-Celtic to Proto-Brythonic that  ##
 ##   predate the Welsh/Breton/Cornish dialect split.        ##
-##                                                          ##
-##   The chain is deliberately split into two stages:       ##
-##     Stage A  (ProtoBrythPreLenRules) — everything up to  ##
-##              but not including lenition.                 ##
-##     Stage B  (ProtoBrythLenition)   — lenition itself.   ##
-##                                                          ##
-##   This split lets Middle Welsh (and future branches)     ##
-##   insert innovations between apocope and lenition        ##
-##   (e.g. MW *-am apocope must precede lenition so that    ##
-##   the newly word-final *t becomes *θ).                   ##
+##   Rules 7.1–7.38 form a single chain assembled in        ##
+##   Section 9.                                             ##
 ##############################################################
 
-# ── 7A. Pre-lenition rules ───────────────────────────────────────────────────
-
-# 7A.1  *skʷ- → *χw- (initial cluster).
+# 7.1  *skʷ- → *χw- (initial cluster).
 #       Must fire BEFORE BritLabioVelar converts *kʷ → *p, otherwise we would
 #       get *sp- instead of *χw-.
 #       *skʷetlom → *χwetlom → MW chwedl.
-#       Note: the output w is *unstarred* so BritMedialWDrop (rule 7A.9) cannot
+#       Note: the output w is *unstarred* so BritMedialWDrop (rule 7.9) cannot
 #       delete it.
 #      Src: Schrijver 1995; Jackson 1953
 define BritSkwCluster [ {*s}{*kʷ} -> {*χ}w || .#. _ ];
 
-# 7A.2  Labiovelars: *kʷ → *p, *gʷ → *b.
+# 7.2   Labiovelars: *kʷ → *p, *gʷ → *b.
 #       The defining P-Celtic innovation shared by Brythonic and Gaulish.
 #      Src: Jackson 1953; Schrijver 1995
 define BritLabioVelar [
@@ -729,19 +717,19 @@ define BritLabioVelar [
     {*gʷ} -> {*b}
 ];
 
-# 7A.3  Nasal assimilation: *n → *m before *p (the newly created labial stop).
+# 7.3   Nasal assimilation: *n → *m before *p (the newly created labial stop).
 #       *kʷenkʷe → *penpe → *pempe → MW pimp/OBret pemp.
 #      Src: Schrijver 1995; Jackson 1953
 define BritNasalAssim [ {*n}{*p} -> {*m}{*p} ];
 
-# 7A.4  Initial *gd- → *d.
+# 7.4   Initial *gd- → *d.
 #       *gdoniyo- > din/dün: the *gd- cluster simplifies word-initially in
 #       Brittonic as in Goidelic.  Jackson 1953 LHEB §45 discusses simplification
 #       of initial consonant clusters in Common Brittonic.
 #       Src: Jackson 1953 LHEB §45
 define BritGdCluster [ {*g}{*d} -> {*d} || .#. _ ];
 
-# 7A.5  Initial consonant-cluster simplifications (before remaining *s rules).
+# 7.5   Initial consonant-cluster simplifications (before remaining *s rules).
 #       *sr- → *fr-: *srognā > froin/frogna (shared with Gaulish).
 #       *sw- → *χw-: *swelos > χwil (MW chwyl), *swexs > χwēχ (MW chwech).
 #       *sf-, *sɸ- → *f-: *sɸerā > fer.
@@ -757,28 +745,28 @@ define BritInitialSClusters [
     {*s}{*l} -> {*l}     || .#. _
 ];
 
-# 7A.6  Remaining initial *s → *h.
+# 7.6   Remaining initial *s → *h.
 #       All other word-initial *s become *h: *sentus > hint, *sindos > hin.
 #      Src: Schrijver 1995; Jackson 1953 §§ initial s>h
 define BritInitialS [ {*s} -> {*h} || .#. _ ];
 
-# 7A.7  *ɸ → 0 in Brythonic (shared with 5.2 but applied via PCeltPhiLoss).
+# 7.7   *ɸ → 0 in Brythonic (shared with 5.2 but applied via PCeltPhiLoss).
 #       Already defined as PCeltPhiLoss; referenced in the chain below.
 #       Src: GOI §26; McCone 1996:81
 
-# 7A.8  Initial *w → *gw.
+# 7.8   Initial *w → *gw.
 #       *wiros > gwr, *windos > gwinn.
 #       "gw" surfaces as g+u in the IPA data.
 #      Src: Schrijver 1995; Jackson 1953
 define BritInitialW [ {*w} -> {*gw} || .#. _ ];
 
-# 7A.9  Medial *w → 0 after a consonant.
+# 7.9   Medial *w → 0 after a consonant.
 #       *ardwos > arð (only targets starred {*w}, not the unstarred w
 #       left by BritSkwCluster/BritInitialSClusters).
 #      Src: Jackson 1953
 define BritMedialWDrop [ {*w} -> 0 || PCeltStarConsonant _ ];
 
-# 7A.10 *y deletion (with conditioned pre-deletion changes).
+# 7.10 *y deletion (with conditioned pre-deletion changes).
 #       *ye- → *ia- word-initially (*yegis > iâ "ice").
 #       *y- before other vowels → *i- (*yālos > MW iaul).
 #       *y → *ð or 0 when it will be word-final after apocope
@@ -792,12 +780,12 @@ define BritYDrop [
     {*y}      -> 0
 ];
 
-# 7A.11 *mb → *m.
+# 7.11 *mb → *m.
 #       *kambos > camm/cam.
 #      Src: Jackson 1953; Schrijver 1995
 define BritMbSimpl [ {*m}{*b} -> {*m} ];
 
-# 7A.12 Geminate simplification with spirantization.
+# 7.12 Geminate simplification with spirantization.
 #       *tt → *θ (surface th in Welsh, z in Breton).
 #       *kk → *x (→ *χ word-finally via BritFinalX).
 #       *ll, *nn, *mm → single consonants.
@@ -810,14 +798,14 @@ define BritGeminates [
     {*m}{*m} -> {*m}
 ];
 
-# 7A.13 *ei diphthong simplification before nasals: *ei → *e.
+# 7.13 *ei diphthong simplification before nasals: *ei → *e.
 #       *saleinos > halen/holen: otherwise BritVowelDiphthongs would give *oi
 #       and the surface form would be *halin rather than halen.
 #       Applied BEFORE BritVowelDiphthongs.
 #      Src: Schrijver 1995 §§ diphthong mergers
 define BritEINasalMerge [ {*ei} -> {*e} || _ [{*n}|{*m}] ];
 
-# 7A.14 Diphthong mergers.
+# 7.14 Diphthong mergers.
 #       *ei, *ai → *oi; *au, *ou → *u; *ow → *aw or *u.
 #      Src: Schrijver 1995; Jackson 1953 §§ New Quantity System
 define BritVowelDiphthongs [
@@ -828,13 +816,13 @@ define BritVowelDiphthongs [
     {*ow} -> ({*aw} | {*u})
 ];
 
-# 7A.15 *oRa → *aRa assimilation (R = single sonorant).
+# 7.15 *oRa → *aRa assimilation (R = single sonorant).
 #       *toranos > taran (not in Goidelic).
 #       Must precede raisings and A-affection.
 #      Src: Schrijver 1995; Jackson 1953
 define BritORAtoARA [ {*o} -> {*a} || _ PCeltStarSonorant [{*a}|{*ā}] ];
 
-# 7A.16 Raising: *e → *i (non-deterministic) before nasal + stop.
+# 7.16 Raising: *e → *i (non-deterministic) before nasal + stop.
 #       Wikipedia §5.2.2.1.  *sentus > hint/*hins; *kʷenkʷe > pimp/pemp.
 #       Non-deterministic to capture MW/OBret dialect variation.
 #      Src: Schrijver 1995; Jackson 1953
@@ -842,7 +830,7 @@ define BritRaising [
     {*e} -> ({*i}|{*e}) || _ [{*n}|{*m}] [{*t}|{*d}|{*k}|{*g}|{*p}|{*b}]
 ];
 
-# 7A.17 A-affection: *u → *o, *i → *e before a syllable ending in *ā.
+# 7.17 A-affection: *u → *o, *i → *e before a syllable ending in *ā.
 #       Wikipedia §5.2.2.7.  *tundā > ton; *windā > gwen vs *windos > gwyn.
 #       Applied before apocope so the conditioning *ā is still present.
 #      Src: Schrijver 1995; Jackson 1953
@@ -851,31 +839,31 @@ define BritAAffection [
     {*i} -> {*e} || _ PCeltStarConsonant+ {*ā}
 ];
 
-# 7A.18 O-affection (i-affection of *o): *o → *e before consonant(s) + *i.
+# 7.18 O-affection (i-affection of *o): *o → *e before consonant(s) + *i.
 #       Applied after BritIAffection so *a → *i affection fires first.
 #       *wolis > *gwoli > *gweli > gueli (MW).
 #      Src: Schrijver 1995; Jackson 1953
 define BritOIAffection [ {*o} -> {*e} || _ PCeltStarConsonant+ {*i} ];
 
-# 7A.19 *ū → *i (Brythonic u-raising).
+# 7.19 *ū → *i (Brythonic u-raising).
 #       *dūnom > din, *rūnā > rin.  Produces short *i (not *ī).
 #      Src: Schrijver 1995 §§ u-raising
 define BritUtoI [ {*ū} -> {*i} ];
 
-# 7A.20 I-affection (umlaut): *a → *i in syllable before *ī.
+# 7.20 I-affection (umlaut): *a → *i in syllable before *ī.
 #       *bleidanī > bloiðin (the *a in *-an- raises before final *-ī).
 #       Applied before apocope so the conditioning *ī is still present.
 #      Src: Jackson 1953; Schrijver 1995
 define BritIAffection [ {*a}{*n}{*ī} -> {*i}{*n}{*ī} ];
 
-# 7A.21 *xt → *iθ (*x vocalizes before *t, spirantizing *t).
+# 7.21 *xt → *iθ (*x vocalizes before *t, spirantizing *t).
 #       Applied after BritUtoI (so *ū is already *i) and before BritApocope.
 #       *oxtū → *ox+ti (UtoI) → *o+iθ+i (XTCluster) → *oiθ (apocope drops final *i).
 #       Surface: OW/OCorn oiθ.
 #      Src: Schrijver 1995; Jackson 1953
 define BritXTCluster [ {*x}{*t} -> {*i}{*θ} ];
 
-# 7A.22 Final-syllable apocope.
+# 7.22 Final-syllable apocope.
 #       Pass 1: *-os, *-om drop.
 #       Pass 2: *s after vowel drops.
 #       Pass 3: *-tu → *-t (drops *u after *t).
@@ -909,102 +897,77 @@ define BritApocope [
     [{*e} -> 0 || PCeltStarConsonant _ .#.]
 ];
 
-# ── 7B. Lenition rules ───────────────────────────────────────────────────────
-#
-# Each rule is a separate define, composed sequentially below in BritLenition.
-# Separating them avoids foma parallel-replacement / .#. interaction issues.
-
-# *sn → *n (*kʷresnom > pren; initial *s drops before nasal in cluster).
+# 7.23 *sn → *n (*kʷresnom > pren; initial *s drops before nasal in cluster).
 #      Src: Jackson 1953; Schrijver 1995
 define BritSNSimpl [ {*s}{*n} -> {*n} ];
 
-# *ī syncope in r-stem kinship terms (*mātīr > *mātr, *brātīr > *brātr).
+# 7.24 *ī syncope in r-stem kinship terms (*mātīr > *mātr, *brātīr > *brātr).
 #      Jackson 1953 LHEB discusses the development of *mātīr, *brātīr, *swestīr
 #      in Brittonic: the *ī is lost before the word-final *r in kinship r-stems.
 #      OW modr, MW brawd, OBret brotr all evidence this syncope.
 #      Src: Jackson 1953 LHEB; Schrijver 1995:377
 define BritIRSyncope [ {*ī} -> 0 || PCeltStarVowel PCeltStarConsonant _ {*r} .#. ];
 
-# *x → *χ word-finally after a vowel (follows geminate *kk → *x in 7A.12).
+# 7.25 *x → *χ word-finally after a vowel (follows geminate *kk → *x in 7.12).
 #      *mukkus → *mux → *muχ → OW/OCorn moχ.
 #      Src: Schrijver 1995
 define BritFinalX [ {*x} -> {*χ} || PCeltStarVowel _ .#. ];
 
-# Medial *xs → *χ before a vowel (*ouxselos > OW/MW uχel 'high', OBret uchel).
+# 7.26 Medial *xs → *χ before a vowel (*ouxselos > OW/MW uχel 'high', OBret uchel).
 #      Schrijver 1995:342–343 analyses the *xs cluster in Brittonic: *x spirantizes
 #      to *χ and the *s is absorbed before a following vowel.
 #      Src: Schrijver 1995:342–343
 define BritMedialXS [ {*x}{*s} -> {*χ} || _ PCeltStarVowel ];
 
-# Final *ng → *ŋ (velar nasal coalescence; *longā > loŋg/ɬoŋ).
+# 7.27 Final *ng → *ŋ (velar nasal coalescence; *longā > loŋg/ɬoŋ).
 #      Src: Jackson 1953; Schrijver 1995
 define BritFinalNGCoal [ {*n}{*g} -> {*ŋ} || _ .#. ];
 
-# Final *nd → *n (*sindos > hin, *landā > lan).
+# 7.28 Final *nd → *n (*sindos > hin, *landā > lan).
 #      Src: Jackson 1953; Schrijver 1995
 define BritFinalNDrop [ {*n}{*d} -> {*n} || _ .#. ];
 
-# *e → *i before *g (vowel raising before velar; *tegos > tig in OW).
+# 7.29 *e → *i before *g (vowel raising before velar; *tegos > tig in OW).
 #      Src: Jackson 1953; Schrijver 1995
 define BritEtoIBeforeG [ {*e} -> {*i} || _ {*g} ];
 
-# Intervocalic *d → *ð.
+# 7.30 Intervocalic *d → *ð.
 #      Src: Jackson 1953; Schrijver 1995
 define BritLenInterD [ {*d} -> {*ð} || PCeltStarLenCtx _ PCeltStarVowel ];
 
-# Word-final *d → *ð after a vowel or sonorant.
+# 7.31 Word-final *d → *ð after a vowel or sonorant.
 #      Src: Jackson 1953; Schrijver 1995
 define BritLenFinalD [ {*d} -> {*ð} || PCeltStarLenCtx _ .#. ];
 
-# *t → *d before a sonorant after a vowel (*brātus → *brādus → braud).
+# 7.32 *t → *d before a sonorant after a vowel (*brātus → *brādus → braud).
 #      Src: Jackson 1953; Schrijver 1995
 define BritLenT [ {*t} -> {*d} || PCeltStarVowel _ PCeltStarSonorant ];
 
-# Final *t → *θ after *r or *l (*nertom → nerθ, *slattā → laθ).
+# 7.33 Final *t → *θ after *r or *l (*nertom → nerθ, *slattā → laθ).
 #      Src: Jackson 1953; Schrijver 1995
 define BritFinalTSpirRL [ {*t} -> {*θ} || [{*r}|{*l}] _ .#. ];
 
-# Final *t → *d after any vowel (*bitus → bid; *brātus → braud via BritLenT first).
+# 7.34 Final *t → *d after any vowel (*bitus → bid; *brātus → braud via 7.32 first).
 #      Src: Jackson 1953; Schrijver 1995
 define BritLenFinalT [ {*t} -> {*d} || PCeltStarVowel _ .#. ];
 
-# Final *k → *χ after a sonorant (*rīxs → *rīχ).
+# 7.35 Final *k → *χ after a sonorant (*rīxs → *rīχ).
 #      Src: Schrijver 1995
 define BritLenFinalK [ {*k} -> {*χ} || PCeltStarSonorant _ .#. ];
 
-# Final *k → *g after a vowel (*drukos → drwg, *mrakis → brag).
+# 7.36 Final *k → *g after a vowel (*drukos → drwg, *mrakis → brag).
 #      Src: Jackson 1953; Schrijver 1995
 define BritVowelFinalK [ {*k} -> {*g} || PCeltStarVowel _ .#. ];
 
-# Intervocalic *g → *ɣ.
+# 7.37 Intervocalic *g → *ɣ.
 #      Src: Jackson 1953; Schrijver 1995
 define BritLenInterG [ {*g} -> {*ɣ} || PCeltStarVowel _ PCeltStarVowel ];
 
-# *g → *ɣ after a vowel before a sonorant at word end
-# (*maglos > mail, *tigernos > teyrn).
-# *ɣ surfaces as i via BritRemoveStars, creating diphthongs.
+# 7.38 *g → *ɣ after a vowel before a sonorant at word end
+#      (*maglos > mail, *tigernos > teyrn).
+#      *ɣ surfaces as i via BritRemoveStars, creating diphthongs.
 #      Src: Schrijver 1995
 define BritLenGBeforeSon [ {*g} -> {*ɣ} || PCeltStarVowel _ PCeltStarSonorant .#. ];
-
-# Lenition chain (composed in historical order).
-define BritLenition [
-    BritSNSimpl
-    .o. BritIRSyncope
-    .o. BritFinalX
-    .o. BritMedialXS
-    .o. BritFinalNGCoal
-    .o. BritFinalNDrop
-    .o. BritEtoIBeforeG
-    .o. BritLenInterD
-    .o. BritLenFinalD
-    .o. BritLenT
-    .o. BritFinalTSpirRL
-    .o. BritLenFinalT
-    .o. BritLenFinalK
-    .o. BritVowelFinalK
-    .o. BritLenInterG
-    .o. BritLenGBeforeSon
-];
 
 ##############################################################
 ## SECTION 8 — Brythonic RemoveStars tables                 ##
@@ -1128,8 +1091,8 @@ define OCornRemoveStars [
 ## SECTION 9 — Proto-Brythonic transducer assembly          ##
 ##############################################################
 
-# Stage A: everything up to (but not including) lenition.
-define ProtoBrythPreLenRules [
+# Full Proto-Brythonic rule chain (rules 7.1–7.38, starred → starred).
+define ProtoBrythRules [
     PCeltInitialUPhi
     .o. BritSkwCluster
     .o. BritLabioVelar
@@ -1153,73 +1116,59 @@ define ProtoBrythPreLenRules [
     .o. BritIAffection
     .o. BritXTCluster
     .o. BritApocope
+    .o. BritSNSimpl
+    .o. BritIRSyncope
+    .o. BritFinalX
+    .o. BritMedialXS
+    .o. BritFinalNGCoal
+    .o. BritFinalNDrop
+    .o. BritEtoIBeforeG
+    .o. BritLenInterD
+    .o. BritLenFinalD
+    .o. BritLenT
+    .o. BritFinalTSpirRL
+    .o. BritLenFinalT
+    .o. BritLenFinalK
+    .o. BritVowelFinalK
+    .o. BritLenInterG
+    .o. BritLenGBeforeSon
 ];
 
-# Stage B: shared lenition.
-define ProtoBrythLenition BritLenition;
-
-# Full Proto-Brythonic chain (starred → starred, no surface symbols yet).
-define ProtoBrythRules ProtoBrythPreLenRules .o. ProtoBrythLenition;
-
-# Proto-Brythonic transducer: Proto-Celtic → Proto-Brythonic (still starred).
-define ProtoBrythonic CelticProtoInput .o. ProtoBrythRules;
+# Proto-Brythonic transducer: Proto-Celtic → Proto-Brythonic (starred).
+define OWStarred CelticProtoInput .o. ProtoBrythRules;
 
 ##############################################################
 ## SECTION 10 — Welsh branch                                ##
 ##############################################################
 
 # ── 10.1 Old Welsh ───────────────────────────────────────────────────────────
-# No OW-specific phonological rules are needed beyond the shared Proto-Brythonic
-# chain at this level of abstraction.  This is the hook for future OW-specific
-# innovations (vowel affection details, specific cluster changes, etc.).
-define OldWelsh ProtoBrythonic .o. BritRemoveStars .o. BritSurface;
+define OldWelsh OWStarred .o. BritRemoveStars .o. BritSurface;
 
 # ── 10.2 Middle Welsh ────────────────────────────────────────────────────────
-# MW adds several innovations that postdate Old Welsh.  Because MW1 (final *-am
-# apocope) must precede lenition — so that consonants made word-final by the
-# apocope undergo lenition — the MW chain is built by re-composing the two
-# Proto-Brythonic stages with MW rules inserted between them.
+# MW evolved from Old Welsh.  Two innovations postdate OW:
 #
-# MW1  Final *-am → 0.
-#      *sextam > seiθ: the *t is newly word-final after *am drops, so it
-#      undergoes lenition (→ *θ) in Stage B.
-#      Src: Jackson 1953 §§ final syllable loss
-define MWAmApocope [ {*a}{*m} -> 0 || _ .#. ];
-
-# MW2  Final *r deletion after *d: *...dr# → *...d#.
+# MW1  Final *r deletion after *d.
 #      OW/OBret keep *r (*mātīr > OW modr, *brātīr > OBret brotr);
 #      MW loses it (*brātīr > MW brawd).
-#      Jackson 1953 LHEB discusses r-stem kinship terms: the *dr cluster
-#      formed by BritIRSyncope (*ī-drop) + BritLenT (*t→*d) simplifies
-#      to *d in Middle Welsh (contrast OBret which retains *r).
 #      Src: Jackson 1953 LHEB
 define MWFinalRAfterD [ {*r} -> 0 || {*d} _ .#. ];
 
-# MW3  Final *u deletion after a consonant: *Cu# → *C#.
-#      Extends apocope of the high back vowel word-finally.
+# MW2  Final *u deletion after a consonant.
 #      *weidus > gueið (combined with *oi → i in RemoveStars).
 #      Src: Jackson 1953 §§ final u apocope
 define MWFinalU [ {*u} -> 0 || PCeltStarConsonant _ .#. ];
 
-# MW rule chain: Stage A → MW1 apocope → Stage B lenition → MW2–3 post-lenition.
-define MWStarred CelticProtoInput
-    .o. ProtoBrythPreLenRules
-    .o. MWAmApocope
-    .o. ProtoBrythLenition
-    .o. MWFinalRAfterD
-    .o. MWFinalU;
-
-define MiddleWelsh MWStarred .o. BritRemoveStars .o. BritSurface;
+define MiddleWelsh OWStarred .o. MWFinalRAfterD .o. MWFinalU
+    .o. BritRemoveStars .o. BritSurface;
 
 ##############################################################
 ## SECTION 11 — Breton and Cornish branches                 ##
-##   Both currently share the full Proto-Brythonic chain;   ##
-##   dialect-specific differences are captured in their     ##
-##   RemoveStars tables (Section 8).                        ##
+##   Both share the full Proto-Brythonic chain; dialect     ##
+##   differences are captured in their RemoveStars tables.  ##
 ##############################################################
 
-define OBretReflexes  CelticProtoInput .o. ProtoBrythRules .o. OBretRemoveStars;
-define OCornReflexes  CelticProtoInput .o. ProtoBrythRules .o. OCornRemoveStars;
+define OBretReflexes  OWStarred .o. OBretRemoveStars;
+define OCornReflexes  OWStarred .o. OCornRemoveStars;
 
 define OldBreton     OBretReflexes .o. BritSurface;
 define MiddleBreton  OBretReflexes .o. BritSurface;
